@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>Admin PMS - Users</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Feather IconIcons-->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <!-- fontawesome  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css"
+          integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css"
+          integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+
+    <script type="text/javascript" th:src="@{js/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{css/bootstrap-4.3.1-dist/js/bootstrap.min.js}"></script>
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="dashboard.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<!--START DASHBOARD-->
+
+<!-- Start Header -->
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">PMS-Admin</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+
+            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>
+        </div>
+    </div>
+</header>
+<!-- End Header -->
+
+<!-- Start SideBar -->
+<div class="container-fluid">
+
+
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+
+                <ul class="nav flex-column">
+                    <!-- -->
+                    <div id="accordion">
+
+                        <!--1 Dashboard-->
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a class="nav-link" th:href="@{/}">
+                                        <span data-feather="home"></span>
+                                        Dashboard
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <!--2 Users-->
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        <span data-feather="users"></span>
+                                        Users
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                 data-parent="#accordion">
+                                <a class="nav-link" th:href="@{/viewPharmacist}">
+                                    <span data-feather="list"></span>
+                                    All Users
+                                </a>
+                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">
+                                    <span data-feather="plus-square"></span>
+                                    New Users
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <!--3 Categories-->
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        <span data-feather="archive"></span>
+                                        Categories
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                 data-parent="#accordion">
+                                <a class="nav-link" th:href="@{/viewCategories}">
+                                    <span data-feather="list"></span>
+                                    All Categories
+                                </a>
+                                <a class="nav-link" th:href="@{/showAddCategoryForm}">
+                                    <span data-feather="plus-square"></span>
+                                    New Categories
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--4 Brands-->
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseFour" aria-expanded="false"
+                                            aria-controls="collapseFour">
+                                        <span data-feather="layers"></span>
+                                        Brands
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                 data-parent="#accordion">
+
+                                <a class="nav-link" th:href="@{/viewBrands}">
+                                    <span data-feather="list"></span>
+                                    All Brands
+                                </a>
+
+                                <a class="nav-link" th:href="@{/showAddBrandForm}">
+                                    <span data-feather="plus-square"></span>
+                                    New Brands
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <!--5 Items-->
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseFive" aria-expanded="false"
+                                            aria-controls="collapseFive">
+                                        <span data-feather="archive"></span>
+                                        Items
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                 data-parent="#accordion">
+                                <a class="nav-link" th:href="@{/viewDrugs}">
+                                    <span data-feather="list"></span>
+                                    All Items
+                                </a>
+                                <a class="nav-link" th:href="@{/showAddDrugForm}">
+                                    <span data-feather="plus-square"></span>
+                                    New Items
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <!--6 Customers-->
+                        <div class="card">
+                            <div class="card-header" id="headingSix">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseSix" aria-expanded="false"
+                                            aria-controls="collapseSix">
+                                        <span data-feather="users"></span>
+                                        Customers
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                                 data-parent="#accordion">
+                                <a class="nav-link" th:href="@{/}">
+                                    <span data-feather="list"></span>
+                                    All Customers
+                                </a>
+                                <a class="nav-link" th:href="@{/}">
+                                    <span data-feather="plus-square"></span>
+                                    New Customers
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--7 Shipping-->
+                        <div class="card">
+                            <div class="card-header" id="headingSeven">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseSeven" aria-expanded="false"
+                                            aria-controls="collapseSeven">
+                                        <span data-feather="truck"></span>
+                                        Stock
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <!--8 Orders-->
+                        <div class="card">
+                            <div class="card-header" id="headingEight">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseEight" aria-expanded="false"
+                                            aria-controls="collapseEight">
+                                        <span data-feather="folder"></span>
+                                        Orders
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <!--9 Reports-->
+                        <div class="card">
+                            <div class="card-header" id="headingNine">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseNine" aria-expanded="false"
+                                            aria-controls="collapseNine">
+                                        <span data-feather="book"></span>
+                                        Reports
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <!--10 Articles-->
+                        <div class="card">
+                            <div class="card-header" id="headingTen">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseTen" aria-expanded="false"
+                                            aria-controls="collapseTen">
+                                        <span data-feather="layout"></span>
+                                        Articles
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTen" class="collapse" aria-labelledby="headingTen"
+                                 data-parent="#accordion">
+                                <a class="nav-link" th:href="@{/articles}">
+                                    <span data-feather="edit-2"></span>
+                                    Articles
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--11 Menus-->
+                        <div class="card">
+                            <div class="card-header" id="headingEleven">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseEleven" aria-expanded="false"
+                                            aria-controls="collapseEleven">
+                                        <span data-feather="menu"></span>
+                                        Menus
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven"
+                                 data-parent="#accordion">
+                                <a class="nav-link" th:href="@{/menus}">
+                                    <span data-feather="list"></span>
+                                    Menus
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--12 Settings-->
+                        <div class="card">
+                            <div class="card-header" id="headingTwelve">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseTwelve" aria-expanded="false"
+                                            aria-controls="collapseTwelve">
+                                        <span data-feather="settings"></span>
+                                        Settings
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve"
+                                 data-parent="#accordion">
+                                <a class="nav-link" th:href="@{/viewsettings}">
+                                    <span data-feather="list"></span>
+                                    All Settings
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!---->
+
+                </ul>
+
+            </div>
+        </nav>
+        <!-- End SideBar -->
+
+        <!-- Start Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h1">Users</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <!--          <div class="btn-group me-2">-->
+                    <!--            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
+                    <!--            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>-->
+                    <!--          </div>-->
+                    <!--          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+                    <!--            <span data-feather="calendar"></span>-->
+                    <!--            This week-->
+                    <!--          </button>-->
+                </div>
+            </div>
+
+            <!--Content Topic-->
+
+            <h2>User List</h2>
+
+            <!--Start Content Goes here-->
+
+
+            <!--Record Display message-->
+            <div th:if="${message != null}" class="alert alert-success">
+                [[${message}]]
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Photos</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Roles</th>
+                        <th scope="col">Status</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="user : ${listUsers}">
+                        <td th:text="${user.id}"></td>
+                        <td>
+                            <span th:if="${user.photos == null}" th:data-feather="image"></span>
+                            <img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
+                                 style="width: 100px"/>
+                        </td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.roles}"></td>
+
+                        <td>
+
+                            <a th:if="${user.enabled == true}"
+                               class="bi bi-person-check-fill"
+                               th:href="@{'/users/' + ${user.id}+ '/enabled/false'}"
+                               title="Disable user user">
+                            </a>
+
+                            <a th:if="${user.enabled == false}"
+                               class="bi bi-person-check"
+                               th:href="@{'/users/' + ${user.id}+ '/enabled/true'}"
+                               title="Enable user">
+                            </a>
+                        </td>
+
+                        <td>
+                            <a class="nav-link"
+                               th:href="@{'/users/edit/' + ${user.id}}"
+                               title="Edit user">
+                                <span data-feather="edit-2"></span>
+                                Edit
+                            </a>
+                            &nbsp;
+                            <a class="nav-link link-delete"
+                               th:href="@{'/users/delete/' + ${user.id}}"
+                               th:userId="${user.id}"
+                               title="Delete user">
+                                <span data-feather="trash-2"></span>
+                                Delete
+                            </a>
+                        </td>
+
+
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <!--End Content Goes here-->
+
+
+        </main>
+    </div>
+</div>
+<!-- End Content -->
+
+<!--Modal dialog confirmation box-->
+<div class="modal fade text-center" id="confirmModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <span id="confirmText"></span>
+            </div>
+
+            <div class="modal-footer">
+                <a class="btn btn-success" href="" id="yesButton">Yes</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal dialog confirmation box-->
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".link-delete").on("click", function(e) {
+			e.preventDefault();
+			link = $(this);
+			userId = link.attr("userId");
+			$("#yesButton").attr("href", link.attr("href"));
+			$("#confirmText").text("Are you sure to delete?" + userId+);
+			$("#confirmModal").modal();
+		});
+	});
+
+
+</script>
+<!--<script type="text/javascript">-->
+<!--		$(document).ready(function(){-->
+<!--			$(".alert").first().hide().fadeTo(2000,1).delay(5000).slideUp(2000,function(){-->
+<!--				$(this).remove();-->
+<!--			});-->
+
+<!--			$(".link-delete").click(function(e){-->
+<!--				var result = confirm("Do you want to delete this record?");-->
+<!--				if(result == false){-->
+<!--					e.preventDefault();-->
+<!--				}-->
+<!--			});-->
+<!--		});-->
+
+<!--</script>-->
+<!--END DASHBOARD-->
+
+<footer>
+    <!-- Feather IconIcons-->
+    <script>
+      feather.replace()
+
+    </script>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+            integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+            integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+            crossorigin="anonymous"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+
+
+    <script src="dashboard.js"></script>
+    <script th:src="@{/js/dashboard.js}"></script>
+
+
+</footer>
+</body>
+</html>
