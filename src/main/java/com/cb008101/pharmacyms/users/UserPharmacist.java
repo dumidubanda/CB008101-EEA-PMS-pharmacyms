@@ -1,6 +1,6 @@
 package com.cb008101.pharmacyms.users;
 
-import com.cb008101.pharmacyms.security.userlogin.UserLogin;
+import com.cb008101.pharmacyms.security.userpharmacist.UserLogin;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package com.cb008101.pharmacyms.security.userlogin;
+package com.cb008101.pharmacyms.security.userpharmacist;
 
 import javax.persistence.*;
 

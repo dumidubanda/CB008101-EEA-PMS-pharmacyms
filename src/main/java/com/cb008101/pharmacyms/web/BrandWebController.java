@@ -26,19 +26,19 @@ public class BrandWebController {
     public String getAllBrands(Model model){
         //model.addAttribute("brand", brandService.getAllBrands());
         model.addAttribute("brand", brandService.getAllCategoryNames());
-        return "viewbrands";
+        return "brand/view_brands";
     }
 
     @GetMapping("/showAddBrandForm")
     public String showAddBrandForm(Brand brand, Model model){
         model.addAttribute("category", categoryService.getAllCategories());
-        return "addbrand";
+        return "brand/add_brand";
     }
 
     @PostMapping("/addNewBrand")
     public String addNewBrand(@Valid Brand brand, BindingResult result, Model model){
         if(result.hasErrors()){
-            return  "addbrand";
+            return  "brand/add_brand";
         }
         brandService.saveBrand(brand);
         return "redirect:/viewBrands";
@@ -47,7 +47,7 @@ public class BrandWebController {
     @GetMapping("/showUpdateBrand/{id}")
     public String showEditBrandForm(@PathVariable("id") Integer id, Model model){
         model.addAttribute("brand", brandService.getBrandById(id));
-        return "editbrands";
+        return "brand/edit_brands";
     }
 
     @PostMapping("/updateBrand/{id}")
@@ -55,7 +55,7 @@ public class BrandWebController {
         if(result.hasErrors()){
             brand.setBrandID(id);
             model.addAttribute("brand", brand);
-            return "editbrands";
+            return "brand/edit_brands";
         }
         Optional<Brand> brand1 = brandService.updateBrand(brand, id);
         return "redirect:/viewBrands";

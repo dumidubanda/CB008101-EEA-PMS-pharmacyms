@@ -38,7 +38,7 @@ public class DrugWebController {
     @GetMapping("/viewDrugs")
     public String getAllDrugs(Model model){
         model.addAttribute("drug", drugItemsService.getAllByNames());
-        return "viewdrugs";
+        return "pharmaitems/view_pharma_item";
     }
 
     @GetMapping("/showAddDrugForm")
@@ -47,13 +47,13 @@ public class DrugWebController {
         model.addAttribute("category", categoryService.getAllCategories());
 //        model.addAttribute("rack", rackService.getAllRacks());
 //        model.addAttribute("supplier", supplierService.getAllSuppliers());
-        return "adddrug";
+        return "pharmaitems/add_pharma_items";
     }
 
     @PostMapping("/addNewDrug")
     public String addNewDrug(@Valid Items items, BindingResult result, Model model){
         if(result.hasErrors()){
-            return  "adddrug";
+            return  "pharmaitems/add_pharma_items";
         }
         drugItemsService.saveDrug(items);
         return "redirect:/viewDrugs";
@@ -62,7 +62,7 @@ public class DrugWebController {
     @GetMapping("/showUpdateDrugForm/{id}")
     public String showEditDrugForm(@PathVariable("id") Integer id, Model model){
         model.addAttribute("drugs", drugItemsService.getByID(id));
-        return "editdrug";
+        return "pharmaitems/edit_pharma_item";
     }
 
     @PostMapping("/updateDrug/{id}")
@@ -70,7 +70,7 @@ public class DrugWebController {
         if(result.hasErrors()){
             items.setDrugID(id);
             model.addAttribute("items", items);
-            return "editdrug";
+            return "pharmaitems/edit_pharma_item";
         }
         Optional<Items> drugs1 = drugItemsService.updateDrug(id, items);
         return "redirect:/viewDrugs";

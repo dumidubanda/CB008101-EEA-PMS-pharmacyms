@@ -13,7 +13,7 @@ public class Brand implements java.io.Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer brandID;
 
-    @Column(name = "itm_brand_name", length = 45, nullable = false)
+    @Column(name = "itm_brand_name", length = 100, nullable = false)
     private String brandName;
 
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.LAZY)

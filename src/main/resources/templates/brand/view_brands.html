@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title><!doctype html>
-        <html lang="en" xmlns:th="http://www.thymeleaf.org">
-        <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
 
-        <title>Admin Dashboard PMS - Admin Dashboard</title>
+    <title>Admin Dashboard PMS - Brands</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
@@ -39,7 +35,6 @@
           font-size: 3.5rem;
         }
       }
-
 
 
     </style>
@@ -91,7 +86,7 @@
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
-                                    <a class="nav-link" th:href="@{/showAddBrandForm}">
+                                    <a class="nav-link" th:href="@{/}">
                                         <span data-feather="home"></span>
                                         Dashboard
                                     </a>
@@ -374,7 +369,7 @@
         <!-- Start Content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h1">Welcome Admin - Dashboard</h1>
+<!--                <h1 class="h1">Admin - Dashboard</h1>-->
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <!--                    <div class="btn-group me-2">-->
                     <!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
@@ -388,20 +383,51 @@
             </div>
 
             <!--Content Topic-->
-            <h2>PMS Admin - Articles</h2>
+            <h2>Brand Management</h2>
 
 
             <!--Start Content Goes here-->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="container-fluid">
+                        <h1>Registered Brands</h1>
+                        <div th:switch="${brand}">
+                            <h2 th:case="null">No brands available</h2>
+                            <div th:case="*" class="table-responsive">
+<!--                                <table id="myTable" class="table table-success table-striped table-hover display">-->
+                                    <table id="myTable" class="table table-striped table-sm" >
 
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Brand ID</th>
+                                        <th scope="col">Brand Name</th>
+                                        <th scope="col">Category </th>
+                                        <th scope="col">Edit </th>
+                                        <th scope="col">Delete </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="brand : ${brand}">
+                                        <td th:text="${brand.brandID}"></td>
+                                        <td th:text="${brand.brandName}"></td>
+                                        <td th:text="${brand.category_name}"></td>
+                                        <td><a th:href="@{/showUpdateBrand/{id} (id=${brand.brandID})}"><i
+                                                class="bi bi-pencil-square"></i></a></td>
+                                        <td><a th:href="@{/deleteBrand/{id} (id=${brand.brandID})}"><i
+                                                class="bi bi-trash-fill" style="color:red"></i></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+<!--                            <button class="btn btn-success" onclick="location.href='/showAddBrandForm'" type="button">-->
+<!--                                Add New Brand-->
+<!--                            </button>-->
+                        </div>
+                    </div>
+                </div>
 
-            <div  >
-                <h3 class="display-4">Feature will be available soon</h3>
-                <span data-feather="box">Feature will be available soon</span>
-
+                <!--End Content Goes here-->
             </div>
-
-            <!--End Content Goes here-->
-
         </main>
     </div>
 </div>
@@ -410,12 +436,24 @@
 
 <!--END DASHBOARD-->
 
+
+<script>
+    $(document).ready(function(){
+  $("#searchBar").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+
+</script>
+
 <footer>
     <!-- Feather IconIcons-->
     <script>
       feather.replace()
-
-
     </script>
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
@@ -437,11 +475,5 @@
 
     <script th:src="@{/js/dashboard.js}"></script>
 </footer>
-</body>
-</html>
-</title>
-</head>
-<body>
-
 </body>
 </html>

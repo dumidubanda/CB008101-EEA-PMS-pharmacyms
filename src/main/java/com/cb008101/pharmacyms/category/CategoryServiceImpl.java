@@ -21,6 +21,7 @@ public class CategoryServiceImpl implements CategoryService
         categoryRepository.save(category);
     }
 
+
     @Override
     public List<Category> getAllCategories()
     {
@@ -35,6 +36,7 @@ public class CategoryServiceImpl implements CategoryService
         categoryRepository.deleteById(id);
     }
 
+
     @Override
     @Transactional
     public Optional<Category> updateCategory(Integer id, Category category)
@@ -45,6 +47,7 @@ public class CategoryServiceImpl implements CategoryService
             return e;
         });
     }
+
 
     @Override
     public Category getCategorytByID(Integer id)

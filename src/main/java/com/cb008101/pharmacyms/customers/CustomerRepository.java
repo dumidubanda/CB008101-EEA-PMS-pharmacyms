@@ -1,4 +1,4 @@
-package com.cb008101.pharmacyms.security.customerlogin;
+package com.cb008101.pharmacyms.customers;
 
 import org.springframework.data.repository.CrudRepository;
 

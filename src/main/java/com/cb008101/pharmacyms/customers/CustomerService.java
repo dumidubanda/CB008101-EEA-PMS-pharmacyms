@@ -1,4 +1,6 @@
-package com.cb008101.pharmacyms.security.customerlogin;
+package com.cb008101.pharmacyms.customers;
+
+import com.cb008101.pharmacyms.security.customerlogin.CustomerLogin;
 
 import java.util.List;
 import java.util.Optional;

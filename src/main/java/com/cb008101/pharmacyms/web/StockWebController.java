@@ -31,19 +31,19 @@ public class StockWebController {
     @GetMapping("/viewStock")
     public String viewStock(Stock stock, Model model){
         model.addAttribute("stock", stockService.getAllDetailsOfStock());
-        return "viewstock";
+        return "stock/view_stock";
     }
 
     @GetMapping("/showAddStockForm")
     public String showAddStockForm(Stock stock, Model model){
         model.addAttribute("drugs", drugItemsService.getAllDrugs());
-        return "addstock";
+        return "stock/add_stock";
     }
 
     @PostMapping("/addNewStock")
     public String addNewStock(@Valid Stock stock, BindingResult result, Model model){
         if(result.hasErrors()){
-            return  "addstock";
+            return  "stock/add_stock";
         }
         stockService.addStock(stock);
         return "redirect:/viewStock";
@@ -52,7 +52,7 @@ public class StockWebController {
     @GetMapping("/showUpdateStock/{id}")
     public String showEditStockForm(@PathVariable("id") Integer id, Model model){
         model.addAttribute("stock", stockService.getStockByID(id));
-        return "editstock";
+        return "stock/edit_stock";
     }
 
     @PostMapping("/updateStock/{id}")
@@ -60,7 +60,7 @@ public class StockWebController {
         if(result.hasErrors()){
             stock.setStockID(id);
             model.addAttribute("stock", stock);
-            return "editstock";
+            return "stock/edit_stock";
         }
         Optional<Stock> stock1 = stockService.updateStock(id, stock);
         return "redirect:/viewCategories";

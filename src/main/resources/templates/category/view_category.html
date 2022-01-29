@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
-    <title>Admin Dashboard PMS - Brands</title>
+    <title>Admin Dashboard PMS - Categories</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
@@ -369,7 +369,7 @@
         <!-- Start Content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-<!--                <h1 class="h1">Admin - Dashboard</h1>-->
+                <!--<h1 class="h1">Welcome Admin - Dashboard</h1>-->
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <!--                    <div class="btn-group me-2">-->
                     <!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
@@ -383,49 +383,46 @@
             </div>
 
             <!--Content Topic-->
-            <h2>Brand Management</h2>
+            <h2>Category Management</h2>
 
 
             <!--Start Content Goes here-->
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="container-fluid">
-                        <h1>Brand Registered</h1>
-                        <div th:switch="${brand}">
-                            <h2 th:case="null">No brands available</h2>
+                        <h1>Available Categories </h1>
+                        <div th:switch="${category}">
+                            <h2 th:case="null">No categories available</h2>
                             <div th:case="*" class="table-responsive">
-<!--                                <table id="myTable" class="table table-success table-striped table-hover display">-->
+<!--                                <table id="myTable" class="table table-success table-striped table-hover">-->
                                     <table id="myTable" class="table table-striped table-sm" >
 
                                     <thead>
                                     <tr>
-                                        <th scope="col">Brand ID</th>
-                                        <th scope="col">Brand Name</th>
-                                        <th scope="col">Category </th>
-                                        <th scope="col">Edit </th>
-                                        <th scope="col">Delete </th>
+                                        <th scope="col">Category ID</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">Edit Category</th>
+                                        <th scope="col">Delete Category</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="brand : ${brand}">
-                                        <td th:text="${brand.brandID}"></td>
-                                        <td th:text="${brand.brandName}"></td>
-                                        <td th:text="${brand.category_name}"></td>
-                                        <td><a th:href="@{/showUpdateBrand/{id} (id=${brand.brandID})}"><i
+                                    <tr th:each="category : ${category}">
+                                        <td th:text="${category.category_id }"></td>
+                                        <td th:text="${category.category_name}"></td>
+                                        <td><a th:href="@{/showUpdateCategory/{id} (id=${category.category_id })}"><i
                                                 class="bi bi-pencil-square"></i></a></td>
-                                        <td><a th:href="@{/deleteBrand/{id} (id=${brand.brandID})}"><i
+                                        <td><a th:href="@{/deleteCategory/{id} (id=${category.category_id })}"><i
                                                 class="bi bi-trash-fill" style="color:red"></i></a></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-<!--                            <button class="btn btn-success" onclick="location.href='/showAddBrandForm'" type="button">-->
-<!--                                Add New Brand-->
+<!--                            <button class="btn btn-success" onclick="location.href='/showAddCategoryForm'"-->
+<!--                                    type="button">Add New Category-->
 <!--                            </button>-->
                         </div>
                     </div>
                 </div>
-
                 <!--End Content Goes here-->
             </div>
         </main>
@@ -436,9 +433,8 @@
 
 <!--END DASHBOARD-->
 
-
 <script>
-    $(document).ready(function(){
+  $(document).ready(function(){
   $("#searchBar").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
@@ -450,10 +446,14 @@
 
 </script>
 
+
 <footer>
     <!-- Feather IconIcons-->
     <script>
       feather.replace()
+
+
+
     </script>
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

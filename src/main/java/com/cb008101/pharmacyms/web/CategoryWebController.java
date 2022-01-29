@@ -25,13 +25,13 @@ public class CategoryWebController
     public String viewCategories(Model model)
     {
         model.addAttribute("category", categoryService.getAllCategories());
-        return "viewcategory";
+        return "category/view_category";
     }
 
     @GetMapping("/showAddCategoryForm")
     public String showAddPharmacistForm(Category category)
     {
-        return "addcategory";
+        return "category/add_category";
     }
 
     @PostMapping("/addNewCategory")
@@ -39,7 +39,7 @@ public class CategoryWebController
     {
         if (result.hasErrors())
         {
-            return "addcategory";
+            return "category/add_category";
         }
         categoryService.addCategory(category);
         return "redirect:/viewCategories";
@@ -49,7 +49,7 @@ public class CategoryWebController
     public String showEditCategoryForm(@PathVariable("id") Integer id, Model model)
     {
         model.addAttribute("category", categoryService.getCategorytByID(id));
-        return "editcategory";
+        return "category/edit_category";
     }
 
     @PostMapping("/updateCategory/{id}")
@@ -59,7 +59,7 @@ public class CategoryWebController
         {
             category.setCategory_id (id);
             model.addAttribute("category", category);
-            return "editcategory";
+            return "category/edit_category";
         }
         Optional<Category> category1 = categoryService.updateCategory(id, category);
         return "redirect:/viewCategories";

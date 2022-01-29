@@ -1,4 +1,4 @@
-package com.cb008101.pharmacyms.security.userlogin;
+package com.cb008101.pharmacyms.security.userpharmacist;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

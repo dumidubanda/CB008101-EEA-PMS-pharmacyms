@@ -1,6 +1,7 @@
-package com.cb008101.pharmacyms.security.customerlogin;
+package com.cb008101.pharmacyms.customers;
 
 
+import com.cb008101.pharmacyms.security.customerlogin.CustomerLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

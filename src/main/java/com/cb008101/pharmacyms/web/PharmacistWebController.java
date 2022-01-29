@@ -27,18 +27,18 @@
 //    @GetMapping("/viewPharmacist")
 //    public String getAllPharmacists(Model model){
 //        model.addAttribute("pharmacist", pharmacistService.getAllPharmacists());
-//        return "viewpharmacist";
+//        return "pharmacists/view_pharmacist";
 //    }
 //
 //    @GetMapping("/showAddPharmacistForm")
 //    public String showAddPharmacistForm(UserPharmacist pharmacist){
-//        return "addpharmacist";
+//        return "pharmacists/add_pharmacist";
 //    }
 //
 //    @PostMapping("/addNewPharmacist")
 //    public String addNewPharmacist(@Valid UserPharmacist pharmacist, BindingResult result, Model model){
 //        if(result.hasErrors()) {
-//            return "addpharmacist";
+//            return "pharmacists/add_pharmacist";
 //        }
 //
 //        pharmacistService.savePharmacist(pharmacist);
@@ -48,7 +48,7 @@
 //    @GetMapping("/showUpdatePharmacist/{id}")
 //    public String showEdiPharmacistForm(@PathVariable ("id") Integer id, Model model){
 //        model.addAttribute("pharmacist", pharmacistService.getPharmacistByID(id));
-//        return "editpharmacist";
+//        return "pharmacists/edit_pharmacist";
 //    }
 //
 //    @PostMapping("/updatePharmacist/{id}")
@@ -56,7 +56,7 @@
 //        if(result.hasErrors()){
 //            pharmacist.setpID(id);
 //            model.addAttribute("pharmacist", pharmacist);
-//            return "editpharmacist";
+//            return "pharmacists/edit_pharmacist";
 //        }
 //        Optional<UserPharmacist> pharm1 = pharmacistService.updatePharmacist(id, pharmacist);
 //        return "redirect:/viewPharmacist";
@@ -70,7 +70,7 @@
 //
 //    @GetMapping("/403")
 //    public String errorPage403() {
-//        return "403";
+//        return "errors/403";
 //    }
 //
 //}

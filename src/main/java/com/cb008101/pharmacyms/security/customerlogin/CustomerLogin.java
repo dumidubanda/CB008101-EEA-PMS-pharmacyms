@@ -12,7 +12,6 @@ public class CustomerLogin
     @Column(name = "customer_login_id", nullable = false)
     private Integer id;
 
-
     @Column(name = "customer_login_name")
     private String username;
 
