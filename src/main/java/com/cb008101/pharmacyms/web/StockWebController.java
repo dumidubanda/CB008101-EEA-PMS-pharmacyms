@@ -25,8 +25,8 @@ public class StockWebController {
     private ItemsService itemsService;
 
 
-    @GetMapping("/viewStock")
-    public String viewStock(Stock stock, Model model){
+    @GetMapping("/viewItemStocks")
+    public String viewItemStocks(Stock stock, Model model){
         model.addAttribute("stock", stockService.getAllDetailsOfStock());
         return "stock/view_stock";
     }
@@ -43,10 +43,10 @@ public class StockWebController {
             return  "stock/add_stock";
         }
         stockService.addStock(stock);
-        return "redirect:/viewStock";
+        return "redirect:/viewItemStocks";
     }
 
-    @GetMapping("/showUpdateStock/{id}")
+    @GetMapping("/showUpdateStockForm/{id}")
     public String showEditStockForm(@PathVariable("id") Integer id, Model model){
         model.addAttribute("stock", stockService.getStockByID(id));
         return "stock/edit_stock";
@@ -60,48 +60,14 @@ public class StockWebController {
             return "stock/edit_stock";
         }
         Optional<Stock> stock1 = stockService.updateStock(id, stock);
-        return "redirect:/viewStock";
+        return "redirect:/viewItemStocks";
     }
 
 
     @GetMapping("/deleteStock/{id}")
     public String deleteCategory(@PathVariable ("id") Integer id, Model model) {
         stockService.deleteStock(id);
-        return "redirect:/viewStock";
+        return "redirect:/viewItemStocks";
     }
-//
-//    @GetMapping("/viewStockDetailsByDrug")
-//    public String getAllDetailsOfStock(Model model, Stock stock){
-//        //model.addAttribute("brand", brandService.getAllBrands());
-//        model.addAttribute("stock", stockService.getAllDetailsOfStock());
-//        return "sales";
-//    }
-//
-//    @GetMapping("/GetStockQty/{id}")
-//    public void getStockQty(Model model, @PathVariable("id") Integer id){
-//        model.addAttribute("stocks", stockService.getStockByID(id));
-//    }
-//
-//    @PostMapping("/updateStockQty/id")
-//    public String updateStockQty(@PathVariable ("id") Integer id, @Valid Stock stock, BindingResult result, Model model){
-//        if(result.hasErrors()){
-//            stock.setStockID(id);
-//            model.addAttribute("stock",stock);
-//            return  "sales";
-//        }
-//        Optional<Stock> stock1 = stockService.reduceStockQty(id, stock.getQty());
-//        return "redirect:/viewStockDetailsByDrug";
-//    }
-
-//    @PostMapping("/addNewInvoice")
-//    public String addNewInvoice(@Valid Invoice invoice, BindingResult result, Model model){
-//        //model.addAttribute("invoice", invoice);
-//        if(result.hasErrors()){
-//           // model.addAttribute("invoice", invoice);
-//            return  "sales";
-//        }
-//        invoiceService.addInvoice(invoice);
-//        return "redirect:/viewStockDetailsByDrug";
-//    }
 
 }

@@ -213,11 +213,11 @@
                             </div>
                             <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewDrugs}">
+                                <a class="nav-link" th:href="@{/viewPharmaItem}">
                                     <span data-feather="list"></span>
                                     All Items
                                 </a>
-                                <a class="nav-link" th:href="@{/showAddDrugForm}">
+                                <a class="nav-link" th:href="@{/showAddPharmaItemForm}">
                                     <span data-feather="plus-square"></span>
                                     New Items
                                 </a>
@@ -265,7 +265,7 @@
 
                             <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewStock}">
+                                <a class="nav-link" th:href="@{/viewItemStocks}">
                                     <span data-feather="list"></span>
 
                                     All Stocks
@@ -441,15 +441,15 @@
                                     <tr th:each="stock : ${stock}">
                                         <td th:text="${stock.stockID}"></td>
                                         <td th:text="${stock.itemName}"></td>
-                                        <td th:text="${stock.mfDate}"></td>
-                                        <td th:text="${stock.expDate}"></td>
-                                        <td th:text="${stock.qty}"></td>
-                                        <td th:text="${stock.rcvdDate}"></td>
+                                        <td th:text="${stock.manuFacDate}"></td>
+                                        <td th:text="${stock.expireDate}"></td>
+                                        <td th:text="${stock.stockQuantity}"></td>
+                                        <td th:text="${stock.stockRecievedDate}"></td>
                                         <td style="text-align:center"><a
-                                                th:href="@{/showUpdateStock/{id} (id=${stock.stockID})}"><i
+                                                th:href="@{/showUpdateStockForm/{id} (id=${stock.stockID})}"><i
                                                 class="bi bi-pencil-square"></i></a></td>
                                         <td style="text-align:center"><a
-                                                th:href="@{/deleteDrug/{id} (id=${stock.stockID})}"><i
+                                                th:href="@{/deletePharmaItem/{id} (id=${stock.stockID})}"><i
                                                 class="bi bi-trash-fill" style="color:red"></i></a></td>
                                     </tr>
                                     </tbody>

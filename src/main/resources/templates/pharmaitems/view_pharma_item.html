@@ -213,11 +213,11 @@
                             </div>
                             <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewDrugs}">
+                                <a class="nav-link" th:href="@{/viewPharmaItem}">
                                     <span data-feather="list"></span>
                                     All Items
                                 </a>
-                                <a class="nav-link" th:href="@{/showAddDrugForm}">
+                                <a class="nav-link" th:href="@{/showAddPharmaItemForm}">
                                     <span data-feather="plus-square"></span>
                                     New Items
                                 </a>
@@ -265,7 +265,7 @@
 
                             <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewStock}">
+                                <a class="nav-link" th:href="@{/viewItemStocks}">
                                     <span data-feather="list"></span>
                                     All Stocks
                                 </a>
@@ -445,10 +445,10 @@
                                         <td th:text="${drug.itemName}"></td>
                                         <td th:text="${drug.categoryName}"></td>
 <!--                                        <td style="text-align:center" th:text="${drug.rackNo}"></td>-->
-                                        <td style="text-align:center" th:text="${drug.fullQty}"></td>
+                                        <td style="text-align:center" th:text="${drug.itemQuantity}"></td>
                                         <td style="text-align:center" th:text="${drug.itmPrice}"></td>
                                         <td style="text-align:center"><a
-                                                th:href="@{/showUpdateDrugForm/{id} (id=${drug.phItemID})}"><i
+                                                th:href="@{/showUpdatePharmaItemForm/{id} (id=${drug.phItemID})}"><i
                                                 class="bi bi-pencil-square"></i></a></td>
                                         <td style="text-align:center"><a
                                                 th:href="@{/deleteStock/{id} (id=${drug.phItemID})}"><i
@@ -457,7 +457,7 @@
                                     </tbody>
                                 </table>
                             </div>
-<!--                            <button class="btn btn-success" onclick="location.href='/showAddDrugForm'" type="button">Add-->
+<!--                            <button class="btn btn-success" onclick="location.href='/showAddPharmaItemForm'" type="button">Add-->
 <!--                                New Drug-->
 <!--                            </button>-->
                         </div>

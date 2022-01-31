@@ -19,20 +19,20 @@ public class ItemsServiceImpl implements ItemsService
 
 
     @Override
-    public void deleteDrug(Integer id)
+    public void deletePharmaItem(Integer id)
     {
         itemsRepository.deleteById(id);
     }
 
     @Override
     @Transactional
-    public Optional<Items> updateDrug(Integer id, Items items)
+    public Optional<Items> updatePharmaItem(Integer id, Items items)
     {
         return itemsRepository.findById(id).map(e ->
         {
             e.setItemName(items.getItemName());
             e.setItmPrice(items.getItmPrice());
-            e.setFullQty(items.getFullQty());
+            e.setItemQuantity(items.getItemQuantity());
             return e;
         });
     }

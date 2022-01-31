@@ -20,9 +20,6 @@ public class Customer implements java.io.Serializable
     @Column(name = "customer_email", nullable = false)
     private String email;
 
-//        @OneToOne(targetEntity = CustomerLogin.class, cascade = CascadeType.ALL)
-//        @JoinColumn(name="customer_id", referencedColumnName = "customer_login_id")
-//        private CustomerLogin customerLogin;
 
     @OneToOne(targetEntity = CustomerLogin.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_login_id")

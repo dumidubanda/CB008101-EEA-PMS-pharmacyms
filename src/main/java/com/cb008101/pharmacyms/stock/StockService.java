@@ -22,6 +22,6 @@ public interface StockService
 
     List<StockItemDTO> getAllDetailsOfStock();
 
-    Optional<Stock> reduceStockQty(Integer id, int qty);
+    Optional<Stock> reduceStockQty(Integer id, int stockQuantity);
 
 }

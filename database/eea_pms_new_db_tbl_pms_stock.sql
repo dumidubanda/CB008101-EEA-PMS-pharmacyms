@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `tbl_pms_stock`;
 CREATE TABLE `tbl_pms_stock` (
   `stock_id` int NOT NULL,
   `exp_date` varchar(255) NOT NULL,
-  `mf_date` varchar(255) NOT NULL,
-  `qty` int NOT NULL,
-  `rcvd_date` varchar(255) NOT NULL,
+  `manu_fac_date` varchar(255) NOT NULL,
+  `stock_quantity` int NOT NULL,
+  `stock_recieved_date` varchar(255) NOT NULL,
   `pharma_item_id` int DEFAULT NULL,
   PRIMARY KEY (`stock_id`),
   KEY `FK2xa2agvuswjkxsiatd4ferb04` (`pharma_item_id`),

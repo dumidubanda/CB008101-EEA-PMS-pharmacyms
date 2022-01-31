@@ -28,7 +28,7 @@ public class Items implements java.io.Serializable {
     private String itemName;
 
     @Column(name = "item_total_qty", nullable = false)
-    private  Integer fullQty;
+    private  Integer itemQuantity;
 
     @Column(name = "price", nullable = false)
     private Float itmPrice;
@@ -74,14 +74,14 @@ public class Items implements java.io.Serializable {
         this.itemName = itemName;
     }
 
-    public Integer getFullQty()
+    public Integer getItemQuantity()
     {
-        return fullQty;
+        return itemQuantity;
     }
 
-    public void setFullQty(Integer fullQty)
+    public void setItemQuantity(Integer itemQuantity)
     {
-        this.fullQty = fullQty;
+        this.itemQuantity = itemQuantity;
     }
 
     public Float getItmPrice()

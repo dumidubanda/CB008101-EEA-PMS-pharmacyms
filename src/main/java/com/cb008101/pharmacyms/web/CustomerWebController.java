@@ -23,17 +23,7 @@ public class CustomerWebController
     @Autowired
     private CustomerService customerService;
 
-//    @Autowired
-//    private BrandService brandService;
-//
-//    @Autowired
-//    private CategoryService categoryService;
 
-//    @Autowired
-//    private RackService rackService;
-//
-//    @Autowired
-//    private SupplierService supplierService;
 
     @GetMapping("/viewCustomers")
     public String getAllDrugs(Model model)
@@ -42,54 +32,10 @@ public class CustomerWebController
         return "customers/view_customers";
     }
 
-//    @GetMapping("/showAddDrugForm")
-//    public String showAddDrugForm(Items items, Model model)
-//    {
-////        model.addAttribute("brand", brandService.getAllBrands());
-////        model.addAttribute("category", categoryService.getAllCategories());
-////        model.addAttribute("rack", rackService.getAllRacks());
-////        model.addAttribute("supplier", supplierService.getAllSuppliers());
-//        return "customers/view_customers";
-//    }
 
-//    @PostMapping("/addNewDrug")
-//    public String addNewDrug(@Valid Items items, BindingResult result, Model model)
-//    {
-//        if (result.hasErrors())
-//        {
-//            return "pharmaitems/add_pharma_items";
-//        }
-//        customerService.saveDrug(items);
-//        return "redirect:/viewDrugs";
-//    }
-
-//    @GetMapping("/showUpdateDrugForm/{id}")
-//    public String showEditDrugForm(@PathVariable("id") Integer id, Model model)
-//    {
-//        model.addAttribute("drugs", customerService.getByID(id));
-//
-//        //added now
-////        model.addAttribute("brand", brandService.getAllBrands());
-////        model.addAttribute("category", categoryService.getAllCategories());
-//
-//        return "customers/view_customers";
-//    }
-
-//    @PostMapping("/updateDrug/{id}")
-//    public String updateDrug(@PathVariable("id") Integer id, @Valid Items items, BindingResult result, Model model)
-//    {
-//        if (result.hasErrors())
-//        {
-//            items.setDrugID(id);
-//            model.addAttribute("items", items);
-//            return "customers/view_customers";
-//        }
-//        Optional<Items> drugs1 = customerService.updateCustomer(id, items);
-//        return "redirect:/viewDrugs";
-//    }
 
     @GetMapping("/deletecustomer/{id}")
-    public String deleteDrug(@PathVariable("id") Integer id, Model model)
+    public String deletePharmaItem(@PathVariable("id") Integer id, Model model)
     {
         customerService.deleteCustomer(id);
         return "redirect:/viewCustomers";

@@ -39,10 +39,10 @@ public class StockServiceImpl implements StockService
         return stockRepository.findById(id).map(e ->
         {
             e.setDrugs(stock.getDrugs());
-            e.setMfDate(stock.getMfDate());
-            e.setExpDate(stock.getExpDate());
-            e.setQty(stock.getQty());
-            e.setRcvdDate(stock.getRcvdDate());
+            e.setManuFacDate(stock.getManuFacDate());
+            e.setExpireDate(stock.getExpireDate());
+            e.setstockQuantity(stock.getstockQuantity());
+            e.setStockRecievedDate(stock.getStockRecievedDate());
             return e;
         });
     }
@@ -73,11 +73,11 @@ public class StockServiceImpl implements StockService
 
     @Override
     @Transactional
-    public Optional<Stock> reduceStockQty(Integer id, int qty)
+    public Optional<Stock> reduceStockQty(Integer id, int stockQuantity)
     {
         return stockRepository.findById(id).map(e ->
         {
-            e.setQty(qty);
+            e.setstockQuantity(stockQuantity);
             return e;
         });
     }

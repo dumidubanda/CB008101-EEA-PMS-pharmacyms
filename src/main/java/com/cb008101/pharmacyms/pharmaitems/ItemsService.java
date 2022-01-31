@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface ItemsService
 {
-    void deleteDrug(Integer id);
+    void deletePharmaItem(Integer id);
 
-    Optional<Items> updateDrug(Integer id, Items items);
+    Optional<Items> updatePharmaItem(Integer id, Items items);
 
     List<Items> getAllDrugs();
 

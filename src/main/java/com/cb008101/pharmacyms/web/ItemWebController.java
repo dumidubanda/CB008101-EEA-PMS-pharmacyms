@@ -30,33 +30,33 @@ public class ItemWebController
 
 
 
-    @GetMapping("/viewDrugs")
+    @GetMapping("/viewPharmaItem")
     public String getAllDrugs(Model model)
     {
         model.addAttribute("drug", itemsService.getAllByNames());
         return "pharmaitems/view_pharma_item";
     }
 
-    @GetMapping("/showAddDrugForm")
-    public String showAddDrugForm(Items items, Model model)
+    @GetMapping("/showAddPharmaItemForm")
+    public String showAddPharmaItemForm(Items items, Model model)
     {
         model.addAttribute("brand", brandService.getAllBrands());
         model.addAttribute("category", categoryService.getAllCategories());
         return "pharmaitems/add_pharma_items";
     }
 
-    @PostMapping("/addNewDrug")
-    public String addNewDrug(@Valid Items items, BindingResult result, Model model)
+    @PostMapping("/addNewPharmaItem")
+    public String addNewPharmaItem(@Valid Items items, BindingResult result, Model model)
     {
         if (result.hasErrors())
         {
             return "pharmaitems/add_pharma_items";
         }
         itemsService.saveDrug(items);
-        return "redirect:/viewDrugs";
+        return "redirect:/viewPharmaItem";
     }
 
-    @GetMapping("/showUpdateDrugForm/{id}")
+    @GetMapping("/showUpdatePharmaItemForm/{id}")
     public String showEditDrugForm(@PathVariable("id") Integer id, Model model)
     {
         model.addAttribute("drugs", itemsService.getByID(id));
@@ -68,8 +68,8 @@ public class ItemWebController
         return "pharmaitems/edit_pharma_item";
     }
 
-    @PostMapping("/updateDrug/{id}")
-    public String updateDrug(@PathVariable("id") Integer id, @Valid Items items, BindingResult result, Model model)
+    @PostMapping("/updatePharmaItem/{id}")
+    public String updatePharmaItem(@PathVariable("id") Integer id, @Valid Items items, BindingResult result, Model model)
     {
         if (result.hasErrors())
         {
@@ -77,15 +77,15 @@ public class ItemWebController
             model.addAttribute("items", items);
             return "pharmaitems/edit_pharma_item";
         }
-        Optional<Items> drugs1 = itemsService.updateDrug(id, items);
-        return "redirect:/viewDrugs";
+        Optional<Items> drugs1 = itemsService.updatePharmaItem(id, items);
+        return "redirect:/viewPharmaItem";
     }
 
-    @GetMapping("/deleteDrug/{id}")
-    public String deleteDrug(@PathVariable("id") Integer id, Model model)
+    @GetMapping("/deletePharmaItem/{id}")
+    public String deletePharmaItem(@PathVariable("id") Integer id, Model model)
     {
-        itemsService.deleteDrug(id);
-        return "redirect:/viewDrugs";
+        itemsService.deletePharmaItem(id);
+        return "redirect:/viewPharmaItem";
     }
 
 }

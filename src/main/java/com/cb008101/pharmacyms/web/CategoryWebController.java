@@ -45,7 +45,7 @@ public class CategoryWebController
         return "redirect:/viewCategories";
     }
 
-    @GetMapping("/showUpdateCategory/{id}")
+    @GetMapping("/showUpdateCategoryForm/{id}")
     public String showEditCategoryForm(@PathVariable("id") Integer id, Model model)
     {
         model.addAttribute("category", categoryService.getCategorytByID(id));

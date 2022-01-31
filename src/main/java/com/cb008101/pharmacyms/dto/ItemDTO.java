@@ -8,10 +8,10 @@ public class ItemDTO
     private String brandName;
     private Integer categoryID;
     private String categoryName;
-    private Integer fullQty;
+    private Integer itemQuantity;
     private Float itmPrice;
 
-    public ItemDTO(Integer phItemID, String itemName, Integer brandID, String brandName, Integer categoryID, String categoryName, Integer fullQty, Float itmPrice)
+    public ItemDTO(Integer phItemID, String itemName, Integer brandID, String brandName, Integer categoryID, String categoryName, Integer itemQuantity, Float itmPrice)
     {
         this.phItemID = phItemID;
         this.itemName = itemName;
@@ -19,7 +19,7 @@ public class ItemDTO
         this.brandName = brandName;
         this.categoryID = categoryID;
         this.categoryName = categoryName;
-        this.fullQty = fullQty;
+        this.itemQuantity = itemQuantity;
         this.itmPrice = itmPrice;
     }
 
@@ -83,14 +83,14 @@ public class ItemDTO
         this.categoryName = categoryName;
     }
 
-    public Integer getFullQty()
+    public Integer getItemQuantity()
     {
-        return fullQty;
+        return itemQuantity;
     }
 
-    public void setFullQty(Integer fullQty)
+    public void setItemQuantity(Integer itemQuantity)
     {
-        this.fullQty = fullQty;
+        this.itemQuantity = itemQuantity;
     }
 
     public Float getItmPrice()

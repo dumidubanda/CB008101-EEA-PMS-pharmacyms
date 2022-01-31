@@ -44,7 +44,7 @@ public class BrandWebController {
         return "redirect:/viewBrands";
     }
 
-    @GetMapping("/showUpdateBrand/{id}")
+    @GetMapping("/showUpdateBrandForm/{id}")
     public String showEditBrandForm(@PathVariable("id") Integer id, Model model){
         model.addAttribute("brand", brandService.getBrandById(id));
         return "brand/edit_brands";

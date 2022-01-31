@@ -26,16 +26,16 @@ public class ItemsController
         return itemsService.getAllDrugs();
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/updateDrug/{id}")
-    public void updateDrugs(@PathVariable Integer id, @RequestBody Items items)
+    @RequestMapping(method = RequestMethod.PUT, value = "/updatePharmaItem/{id}")
+    public void updatePharmaItems(@PathVariable Integer id, @RequestBody Items items)
     {
-        itemsService.updateDrug(id, items);
+        itemsService.updatePharmaItem(id, items);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteDrug/{id}")
-    public void deleteDrug(@PathVariable Integer id)
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deletePharmaItem/{id}")
+    public void deletePharmaItem(@PathVariable Integer id)
     {
-        itemsService.deleteDrug(id);
+        itemsService.deletePharmaItem(id);
     }
 
     @GetMapping("/getAllDrugsByNames")

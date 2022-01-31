@@ -17,17 +17,17 @@ public class Stock implements java.io.Serializable {
     @JoinColumn(name = "pharma_item_id", referencedColumnName = "pharma_item_id")
     private Items items;
 
-    @Column(name = "mf_date", nullable = false)
-    private String mfDate;
+    @Column(name = "manu_fac_date", nullable = false)
+    private String manuFacDate;
 
     @Column(name = "exp_date", nullable = false)
-    private String expDate;
+    private String expireDate;
 
-    @Column(name = "qty", nullable = false)
-    private  Integer qty;
+    @Column(name = "stock_quantity", nullable = false)
+    private  Integer stockQuantity;
 
-    @Column(name =  "rcvd_date", nullable = false)
-    private String rcvdDate;
+    @Column(name =  "stock_recieved_date", nullable = false)
+    private String stockRecievedDate;
 
 
     public Integer getStockID() {
@@ -46,35 +46,53 @@ public class Stock implements java.io.Serializable {
         this.items = items;
     }
 
-    public String getMfDate() {
-        return mfDate;
+    public Items getItems()
+    {
+        return items;
     }
 
-    public void setMfDate(String mfDate) {
-        this.mfDate = mfDate;
+    public void setItems(Items items)
+    {
+        this.items = items;
     }
 
-    public String getExpDate() {
-        return expDate;
+    public String getManuFacDate()
+    {
+        return manuFacDate;
     }
 
-    public void setExpDate(String expDate) {
-        this.expDate = expDate;
+    public void setManuFacDate(String manuFacDate)
+    {
+        this.manuFacDate = manuFacDate;
     }
 
-    public Integer getQty() {
-        return qty;
+    public String getExpireDate()
+    {
+        return expireDate;
     }
 
-    public void setQty(Integer qty) {
-        this.qty = qty;
+    public void setExpireDate(String expireDate)
+    {
+        this.expireDate = expireDate;
     }
 
-    public String getRcvdDate() {
-        return rcvdDate;
+    public Integer getstockQuantity()
+    {
+        return stockQuantity;
     }
 
-    public void setRcvdDate(String rcvdDate) {
-        this.rcvdDate = rcvdDate;
+    public void setstockQuantity(Integer stockQuantity)
+    {
+        this.stockQuantity = stockQuantity;
+    }
+
+    public String getStockRecievedDate()
+    {
+        return stockRecievedDate;
+    }
+
+    public void setStockRecievedDate(String stockRecievedDate)
+    {
+        this.stockRecievedDate = stockRecievedDate;
     }
 }

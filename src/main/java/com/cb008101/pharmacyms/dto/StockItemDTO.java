@@ -7,24 +7,24 @@ public class StockItemDTO
     private Integer stockID;
     private Integer phItemID;
     private String itemName;
-    private String mfDate;
-    private String expDate;
-    private Integer qty;
-    private String rcvdDate;
+    private String manuFacDate;
+    private String expireDate;
+    private Integer stockQuantity;
+    private String stockRecievedDate;
     private Float itmPrice;
 
-    public StockItemDTO(Integer qty) {
-        this.qty = qty;
+    public StockItemDTO(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 
-    public StockItemDTO(Integer stockID, Integer phItemID, String itemName, String mfDate, String expDate, Integer qty, String rcvdDate, Float itmPrice) {
+    public StockItemDTO(Integer stockID, Integer phItemID, String itemName, String manuFacDate, String expireDate, Integer stockQuantity, String stockRecievedDate, Float itmPrice) {
         this.stockID = stockID;
         this.phItemID = phItemID;
         this.itemName = itemName;
-        this.mfDate = mfDate;
-        this.expDate = expDate;
-        this.qty = qty;
-        this.rcvdDate = rcvdDate;
+        this.manuFacDate = manuFacDate;
+        this.expireDate = expireDate;
+        this.stockQuantity = stockQuantity;
+        this.stockRecievedDate = stockRecievedDate;
         this.itmPrice = itmPrice;
     }
 
@@ -58,44 +58,44 @@ public class StockItemDTO
         this.itemName = itemName;
     }
 
-    public String getMfDate()
+    public String getManuFacDate()
     {
-        return mfDate;
+        return manuFacDate;
     }
 
-    public void setMfDate(String mfDate)
+    public void setManuFacDate(String manuFacDate)
     {
-        this.mfDate = mfDate;
+        this.manuFacDate = manuFacDate;
     }
 
-    public String getExpDate()
+    public String getExpireDate()
     {
-        return expDate;
+        return expireDate;
     }
 
-    public void setExpDate(String expDate)
+    public void setExpireDate(String expireDate)
     {
-        this.expDate = expDate;
+        this.expireDate = expireDate;
     }
 
-    public Integer getQty()
+    public Integer getStockQuantity()
     {
-        return qty;
+        return stockQuantity;
     }
 
-    public void setQty(Integer qty)
+    public void setStockQuantity(Integer stockQuantity)
     {
-        this.qty = qty;
+        this.stockQuantity = stockQuantity;
     }
 
-    public String getRcvdDate()
+    public String getStockRecievedDate()
     {
-        return rcvdDate;
+        return stockRecievedDate;
     }
 
-    public void setRcvdDate(String rcvdDate)
+    public void setStockRecievedDate(String stockRecievedDate)
     {
-        this.rcvdDate = rcvdDate;
+        this.stockRecievedDate = stockRecievedDate;
     }
 
     public Float getItmPrice()
