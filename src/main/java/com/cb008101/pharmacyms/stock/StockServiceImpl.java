@@ -1,7 +1,7 @@
 package com.cb008101.pharmacyms.stock;
 
 
-import com.cb008101.pharmacyms.dto.StockDrugDTO;
+import com.cb008101.pharmacyms.dto.StockItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,9 +64,9 @@ public class StockServiceImpl implements StockService
     }
 
     @Override
-    public List<StockDrugDTO> getAllDetailsOfStock()
+    public List<StockItemDTO> getAllDetailsOfStock()
     {
-        List<StockDrugDTO> stockList = new ArrayList<StockDrugDTO>();
+        List<StockItemDTO> stockList = new ArrayList<StockItemDTO>();
         stockRepository.getAllStockDetails().forEach(stockList::add);
         return stockList;
     }

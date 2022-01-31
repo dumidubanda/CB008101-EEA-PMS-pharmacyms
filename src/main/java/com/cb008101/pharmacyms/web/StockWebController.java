@@ -1,9 +1,8 @@
 package com.cb008101.pharmacyms.web;
 
 
-//import com.cb008101.pharmacyms.invoice.Invoice;
 import com.cb008101.pharmacyms.stock.Stock;
-import com.cb008101.pharmacyms.pharmaitems.DrugItemsService;
+import com.cb008101.pharmacyms.pharmaitems.ItemsService;
 //import com.cb008101.pharmacyms.invoice.InvoiceService;
 import com.cb008101.pharmacyms.stock.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +22,8 @@ public class StockWebController {
     private StockService stockService;
 
     @Autowired
-    private DrugItemsService drugItemsService;
+    private ItemsService itemsService;
 
-//    @Autowired
-//    private InvoiceService invoiceService;
 
     @GetMapping("/viewStock")
     public String viewStock(Stock stock, Model model){
@@ -36,7 +33,7 @@ public class StockWebController {
 
     @GetMapping("/showAddStockForm")
     public String showAddStockForm(Stock stock, Model model){
-        model.addAttribute("drugs", drugItemsService.getAllDrugs());
+        model.addAttribute("drugs", itemsService.getAllDrugs());
         return "stock/add_stock";
     }
 
@@ -63,38 +60,38 @@ public class StockWebController {
             return "stock/edit_stock";
         }
         Optional<Stock> stock1 = stockService.updateStock(id, stock);
-        return "redirect:/viewCategories";
+        return "redirect:/viewStock";
     }
 
 
     @GetMapping("/deleteStock/{id}")
     public String deleteCategory(@PathVariable ("id") Integer id, Model model) {
         stockService.deleteStock(id);
-        return "redirect:/viewCategories";
+        return "redirect:/viewStock";
     }
-
-    @GetMapping("/viewStockDetailsByDrug")
-    public String getAllDetailsOfStock(Model model, Stock stock){
-        //model.addAttribute("brand", brandService.getAllBrands());
-        model.addAttribute("stock", stockService.getAllDetailsOfStock());
-        return "sales";
-    }
-
-    @GetMapping("/GetStockQty/{id}")
-    public void getStockQty(Model model, @PathVariable("id") Integer id){
-        model.addAttribute("stocks", stockService.getStockByID(id));
-    }
-
-    @PostMapping("/updateStockQty/id")
-    public String updateStockQty(@PathVariable ("id") Integer id, @Valid Stock stock, BindingResult result, Model model){
-        if(result.hasErrors()){
-            stock.setStockID(id);
-            model.addAttribute("stock",stock);
-            return  "sales";
-        }
-        Optional<Stock> stock1 = stockService.reduceStockQty(id, stock.getQty());
-        return "redirect:/viewStockDetailsByDrug";
-    }
+//
+//    @GetMapping("/viewStockDetailsByDrug")
+//    public String getAllDetailsOfStock(Model model, Stock stock){
+//        //model.addAttribute("brand", brandService.getAllBrands());
+//        model.addAttribute("stock", stockService.getAllDetailsOfStock());
+//        return "sales";
+//    }
+//
+//    @GetMapping("/GetStockQty/{id}")
+//    public void getStockQty(Model model, @PathVariable("id") Integer id){
+//        model.addAttribute("stocks", stockService.getStockByID(id));
+//    }
+//
+//    @PostMapping("/updateStockQty/id")
+//    public String updateStockQty(@PathVariable ("id") Integer id, @Valid Stock stock, BindingResult result, Model model){
+//        if(result.hasErrors()){
+//            stock.setStockID(id);
+//            model.addAttribute("stock",stock);
+//            return  "sales";
+//        }
+//        Optional<Stock> stock1 = stockService.reduceStockQty(id, stock.getQty());
+//        return "redirect:/viewStockDetailsByDrug";
+//    }
 
 //    @PostMapping("/addNewInvoice")
 //    public String addNewInvoice(@Valid Invoice invoice, BindingResult result, Model model){

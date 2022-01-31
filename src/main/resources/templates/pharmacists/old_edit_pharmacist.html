@@ -1,0 +1,479 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <meta name="description" content="">-->
+
+<!--    <title>Admin PMS - Update User</title>-->
+
+<!--    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">-->
+
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
+<!--          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">-->
+
+<!--    &lt;!&ndash; Feather IconIcons&ndash;&gt;-->
+<!--    <script src="https://unpkg.com/feather-icons"></script>-->
+
+<!--    &lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
+<!--    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+
+<!--    <style>-->
+<!--      .bd-placeholder-img {-->
+<!--        font-size: 1.125rem;-->
+<!--        text-anchor: middle;-->
+<!--        -webkit-user-select: none;-->
+<!--        -moz-user-select: none;-->
+<!--        user-select: none;-->
+<!--      }-->
+
+<!--      @media (min-width: 768px) {-->
+<!--        .bd-placeholder-img-lg {-->
+<!--          font-size: 3.5rem;-->
+<!--        }-->
+<!--      }-->
+
+
+<!--    </style>-->
+
+
+<!--    &lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+<!--    <link rel="stylesheet" th:href="@{/css/dashboard.css}">-->
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+<!--    <link href="dashboard.css" rel="stylesheet">-->
+<!--    <link href="style.css" rel="stylesheet">-->
+
+<!--</head>-->
+
+
+<!--<body>-->
+
+<!--&lt;!&ndash;START DASHBOARD&ndash;&gt;-->
+
+<!--&lt;!&ndash; Start Header &ndash;&gt;-->
+<!--<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">-->
+<!--    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">PMS-Admin </a>-->
+<!--    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"-->
+<!--            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"-->
+<!--            aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--    <div class="navbar-nav">-->
+<!--        <div class="nav-item text-nowrap">-->
+<!--            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<!--&lt;!&ndash; End Header &ndash;&gt;-->
+
+<!--&lt;!&ndash; Start SideBar &ndash;&gt;-->
+<!--<div class="container-fluid">-->
+
+
+<!--    <div class="row">-->
+<!--        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">-->
+<!--            <div class="position-sticky pt-3">-->
+
+<!--                <ul class="nav flex-column">-->
+<!--                    &lt;!&ndash; &ndash;&gt;-->
+<!--                    <div id="accordion">-->
+
+<!--                        &lt;!&ndash;1 Dashboard&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingOne">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <a class="nav-link" th:href="@{/}">-->
+<!--                                        <span data-feather="home"></span>-->
+<!--                                        Dashboard-->
+<!--                                    </a>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;2 Users&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingTwo">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseTwo" aria-expanded="false"-->
+<!--                                            aria-controls="collapseTwo">-->
+<!--                                        <span data-feather="users"></span>-->
+<!--                                        Users-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/users}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Users-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/users/new}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Users-->
+<!--                                </a>-->
+<!--                            </div>-->
+
+<!--&lt;!&ndash;                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 data-parent="#accordion">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <a class="nav-link" th:href="@{/viewPharmacist}">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <span data-feather="list"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    All Users&ndash;&gt;-->
+<!--&lt;!&ndash;                                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <span data-feather="plus-square"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    New Users&ndash;&gt;-->
+<!--&lt;!&ndash;                                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;3 Categories&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingThree">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseThree" aria-expanded="false"-->
+<!--                                            aria-controls="collapseThree">-->
+<!--                                        <span data-feather="archive"></span>-->
+<!--                                        Categories-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/viewCategories}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Categories-->
+<!--                                </a>-->
+
+<!--                                <a class="nav-link" th:href="@{/showAddCategoryForm}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Categories-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;4 Brands&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingFour">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseFour" aria-expanded="false"-->
+<!--                                            aria-controls="collapseFour">-->
+<!--                                        <span data-feather="layers"></span>-->
+<!--                                        Brands-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"-->
+<!--                                 data-parent="#accordion">-->
+
+<!--                                <a class="nav-link" th:href="@{/viewBrands}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Brands-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/showAddBrandForm}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Brands-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+<!--                        &lt;!&ndash;5 Pharmaceutical items&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingFive">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseFive" aria-expanded="false"-->
+<!--                                            aria-controls="collapseFive">-->
+<!--                                        <span data-feather="archive"></span>-->
+<!--                                        Items-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/viewDrugs}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Items-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/showAddDrugForm}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Items-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+<!--                        &lt;!&ndash;6 Customers&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingSix">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseSix" aria-expanded="false"-->
+<!--                                            aria-controls="collapseSix">-->
+<!--                                        <span data-feather="users"></span>-->
+<!--                                        Customers-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                 <a class="nav-link" th:href="@{/viewCustomers}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Customers-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Customers-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;7 Shipping&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingSeven">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseSeven" aria-expanded="false"-->
+<!--                                            aria-controls="collapseSeven">-->
+<!--                                        <span data-feather="truck"></span>-->
+<!--                                        Stock-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+
+<!--                            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/viewStock}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Stocks-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/showAddStockForm}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    Add Stocks-->
+<!--                                </a>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;8 Orders&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingEight">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseEight" aria-expanded="false"-->
+<!--                                            aria-controls="collapseEight">-->
+<!--                                        <span data-feather="folder"></span>-->
+<!--                                        Orders-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseEight" class="collapse" aria-labelledby="headingEight"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/orders}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Orders-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;9 Reports&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingNine">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseNine" aria-expanded="false"-->
+<!--                                            aria-controls="collapseNine">-->
+<!--                                        <span data-feather="book"></span>-->
+<!--                                        Reports-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseNine" class="collapse" aria-labelledby="headingNine"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/reports}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Reports-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;10 Articles&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingTen">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseTen" aria-expanded="false"-->
+<!--                                            aria-controls="collapseTen">-->
+<!--                                        <span data-feather="layout"></span>-->
+<!--                                        Articles-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseTen" class="collapse" aria-labelledby="headingTen"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/articles}">-->
+<!--                                    <span data-feather="edit-2"></span>-->
+<!--                                    Articles-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;11 Menus&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingEleven">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseEleven" aria-expanded="false"-->
+<!--                                            aria-controls="collapseEleven">-->
+<!--                                        <span data-feather="menu"></span>-->
+<!--                                        Menus-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/menus}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    Menus-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash;12 Settings&ndash;&gt;-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="headingTwelve">-->
+<!--                                <h5 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" data-toggle="collapse"-->
+<!--                                            data-target="#collapseTwelve" aria-expanded="false"-->
+<!--                                            aria-controls="collapseTwelve">-->
+<!--                                        <span data-feather="settings"></span>-->
+<!--                                        Settings-->
+<!--                                    </button>-->
+<!--                                </h5>-->
+<!--                            </div>-->
+<!--                            <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/viewsettings}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Settings-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+<!--                    </div>-->
+<!--                    &lt;!&ndash;&ndash;&gt;-->
+
+<!--                </ul>-->
+
+
+<!--            </div>-->
+<!--        </nav>-->
+<!--        &lt;!&ndash; End SideBar &ndash;&gt;-->
+
+<!--        &lt;!&ndash; Start Content &ndash;&gt;-->
+<!--        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">-->
+<!--            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">-->
+<!--                &lt;!&ndash;<h1 class="h1">Welcome Admin - Dashboard</h1>&ndash;&gt;-->
+<!--                <div class="btn-toolbar mb-2 mb-md-0">-->
+<!--                    &lt;!&ndash;                    <div class="btn-group me-2">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <span data-feather="calendar"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        This week&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </button>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash;Content Topic&ndash;&gt;-->
+<!--            <h2>Users Management</h2>-->
+
+
+<!--            &lt;!&ndash;Start Content Goes here&ndash;&gt;-->
+<!--            <div class="container-fluid">-->
+<!--                <h1>Update User Details</h1>-->
+
+<!--                <form th:object="${pharmacist}" method="post"-->
+<!--                      th:action="@{/updatePharmacist/{id} (id=${pharmacist.pID})}" class="form" style="max-width: 1000px; margin: 0 auto">-->
+
+<!--                    <div class="border border-secondary rounded p-3">-->
+
+
+
+<!--                    <div class="mb-3 row">-->
+<!--                        <label for="Name" class="col-sm-2 col-form-label">New Name</label>-->
+<!--                        <div class="col-sm-10">-->
+<!--                        <input type="text" id="name" th:field="*{pName}" class="form-control">-->
+<!--                        <span th:if="${#fields.hasErrors('pName')}" th:errors="*{pName}" style="color:red"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="mb-3 row">-->
+<!--                        <label for="Name" class="col-sm-2 col-form-label">New Email Address</label>-->
+<!--                        <div class="col-sm-10">-->
+<!--                            <input type="text" id="username" th:field="*{pEmail}" class="form-control">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--&lt;!&ndash;                    <div class="mb-3 row">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label for="Name" class="col-sm-2 col-form-label">New Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="col-sm-10">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <input type="password" id="password" th:field="*{pPassword}" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                    <button class="btn btn-primary">Save</button>-->
+<!--                    <button class="btn btn-danger" type="button" th:href="@{/viewpharmacist}">Cancel-->
+<!--                    </button>-->
+
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;End Content Goes here&ndash;&gt;-->
+
+<!--        </main>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; End Content &ndash;&gt;-->
+
+
+<!--&lt;!&ndash;END DASHBOARD&ndash;&gt;-->
+
+<!--<footer>-->
+<!--    &lt;!&ndash; Feather IconIcons&ndash;&gt;-->
+<!--    <script>-->
+<!--      feather.replace()-->
+
+<!--    </script>-->
+
+<!--    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>-->
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"-->
+<!--            integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"-->
+<!--            crossorigin="anonymous"></script>-->
+
+<!--    <script th:src="@{/js/dashboard.js}"></script>-->
+<!--    <script th:src="@{/js/app.js}"></script>-->
+<!--    <script src="dashboard.js"></script>-->
+
+<!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+<!--    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<!--    <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>-->
+
+
+<!--    <script th:src="@{/js/dashboard.js}"></script>-->
+<!--</footer>-->
+<!--</body>-->
+<!--</html>-->

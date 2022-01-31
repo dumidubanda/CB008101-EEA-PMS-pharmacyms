@@ -9,29 +9,28 @@ public class Category implements java.io.Serializable {
     @Id
     @Column(name = "category_id ")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer category_id ;
+    private Integer categoryID ;
 
     @Column(name = "category_name", length = 60, nullable = false)
-    private String category_name;
+    private String categoryName;
 
-
-    public Integer getCategory_id()
+    public Integer getCategoryID()
     {
-        return category_id;
+        return categoryID;
     }
 
-    public void setCategory_id(Integer category_id)
+    public void setCategoryID(Integer categoryID)
     {
-        this.category_id = category_id;
+        this.categoryID = categoryID;
     }
 
-    public String getCategory_name()
+    public String getCategoryName()
     {
-        return category_name;
+        return categoryName;
     }
 
-    public void setCategory_name(String category_name)
+    public void setCategoryName(String categoryName)
     {
-        this.category_name = category_name;
+        this.categoryName = categoryName;
     }
 }

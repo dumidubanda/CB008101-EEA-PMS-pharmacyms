@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,12 +62,26 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>
+  <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--    <div class="navbar-nav">-->
+<!--        <div class="nav-item text-nowrap">-->
+
+<!--            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+         <div class="navbar-nav">
+            <div class="nav-item text-nowrap dropdown">
+                <a class="nav-link px-3 dropdown-toggle"  data-toggle="dropdown"
+                   sec:authentication="principal.username" ></a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                </div>
+
+            </div>
         </div>
-    </div>
 </header>
 <!-- End Header -->
 
@@ -106,17 +121,32 @@
                                     </button>
                                 </h5>
                             </div>
+
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewPharmacist}">
+                                <a class="nav-link" th:href="@{/users}">
                                     <span data-feather="list"></span>
                                     All Users
                                 </a>
-                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">
+                                <a class="nav-link" th:href="@{/users/new}">
                                     <span data-feather="plus-square"></span>
                                     New Users
                                 </a>
                             </div>
+
+
+
+<!--                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/viewPharmacist}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Users-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Users-->
+<!--                                </a>-->
+<!--                            </div>-->
                         </div>
 
                         <!--3 Categories-->
@@ -212,7 +242,7 @@
                             </div>
                             <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/customers}">
+                                 <a class="nav-link" th:href="@{/viewCustomers}">
                                     <span data-feather="list"></span>
                                     All Customers
                                 </a>
@@ -387,45 +417,135 @@
 
 
             <!--Start Content Goes here-->
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    <div class="container-fluid">
-                        <h1>User - Pharmacists</h1>
-                        <div th:switch="${userPharmacist}">
-                            <h2 th:case="null">No pharmacists available</h2>
-                            <div th:case="*" class="table-responsive">
-<!--                                <table id="myTable" class="table table-success table-striped table-hover">-->
-                                    <table id="myTable" class="table table-striped table-sm" >
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">User ID</th>
-                                        <th scope="col">User Name</th>
-                                        <th scope="col">Email Address</th>
-                                        <th scope="col">Edit </th>
-                                        <th scope="col">Delete </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="userPharmacist : ${userPharmacist}">
-                                        <td th:text="${userPharmacist.pID}"></td>
-                                        <td th:text="${userPharmacist.pName}"></td>
-                                        <td th:text="${userPharmacist.pEmail}"></td>
-                                        <td><a th:href="@{/showUpdatePharmacist/{id} (id=${userPharmacist.pID})}"><i
-                                                class="bi bi-pencil-square"></i></a></td>
-                                        <td><a th:href="@{/deletePharmacist/{id} (id=${userPharmacist.pID})}"><i
-                                                class="bi bi-trash-fill" style="color:red"></i></a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-<!--                            <button class="btn btn-success" onclick="location.href='/showAddPharmacistForm'"-->
-<!--                                    type="button">Add New UserPharmacist-->
-<!--                            </button>-->
-                        </div>
-                    </div>
-                </div>
-                <!--End Content Goes here-->
+
+
+            <!--Record Display message-->
+            <div th:if="${message != null}" class="alert alert-success">
+                [[${message}]]
             </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Photos</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Roles</th>
+                        <th scope="col">Status</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="user : ${listUsers}">
+                        <td th:text="${user.id}"></td>
+
+                        <td>
+                            <span th:if="${user.photos == null}" th:data-feather="image"></span>
+
+                            <img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
+                                 style="width: 100px"/>
+
+                        </td>
+
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.roles}"></td>
+
+                        <td>
+
+                            <a th:if="${user.enabled == true}"
+                               class="bi bi-person-check-fill"
+                               th:href="@{'/users/' + ${user.id}+ '/enabled/false'}"
+                               title="Disable user user">
+                            </a>
+
+                            <a th:if="${user.enabled == false}"
+                               class="bi bi-person-check"
+                               th:href="@{'/users/' + ${user.id}+ '/enabled/true'}"
+                               title="Enable user">
+                            </a>
+                        </td>
+
+                        <td>
+                            <a class="nav-link"
+                               th:href="@{'/users/edit/' + ${user.id}}"
+                               title="Edit user">
+                                <span data-feather="edit-2"></span>
+                                Edit
+                            </a>
+                            &nbsp;
+                            <a class="link-delete"
+                               th:href="@{'/users/delete/' + ${user.id}}"
+                               th:userId="${user.id}"
+                               title="Delete user">
+                                <span data-feather="trash-2"></span>
+                                Delete
+                            </a>
+                        </td>
+
+
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <!--End Content Goes here-->
+
+
+
+
+
+<!--            &lt;!&ndash;Start Content Goes here&ndash;&gt;-->
+<!--            <div class="main-panel">-->
+<!--                <div class="content-wrapper">-->
+<!--                    <div class="container-fluid">-->
+<!--                        <h1>User - Pharmacists</h1>-->
+<!--                        <div th:switch="${pharmacist}">-->
+<!--                            <h2 th:case="null">No pharmacists available</h2>-->
+<!--                            <div th:case="*" class="table-responsive">-->
+<!--&lt;!&ndash;                                <table id="myTable" class="table table-success table-striped table-hover">&ndash;&gt;-->
+<!--                                    <table id="myTable" class="table table-striped table-sm" >-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th scope="col">User ID</th>-->
+<!--                                        <th scope="col">User Name</th>-->
+<!--                                        <th scope="col">Email Address</th>-->
+<!--                                        <th scope="col">Edit </th>-->
+<!--                                        <th scope="col">Delete </th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr th:each="pharmacist : ${pharmacist}">-->
+<!--                                        <td th:text="${pharmacist.pID}"></td>-->
+<!--                                        <td th:text="${pharmacist.pName}"></td>-->
+<!--                                        <td th:text="${pharmacist.pEmail}"></td>-->
+
+<!--                                        <td><a th:href="@{/showUpdatePharmacist/{id} (id=${pharmacist.pID})}"><i-->
+<!--                                                class="bi bi-pencil-square"></i></a></td>-->
+
+<!--                                        <td><a th:href="@{/deletePharmacist/{id} (id=${pharmacist.pID})}"><i-->
+<!--                                                class="bi bi-trash-fill" style="color:red"></i></a></td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--&lt;!&ndash;                            <button class="btn btn-success" onclick="location.href='/showAddPharmacistForm'"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    type="button">Add New UserPharmacist&ndash;&gt;-->
+<!--&lt;!&ndash;                            </button>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;End Content Goes here&ndash;&gt;-->
+
+
+
         </main>
     </div>
 </div>
@@ -447,11 +567,40 @@
 
 </script>
 
+<!--<script type="text/javascript">-->
+
+<!--        $(document).ready(function() {-->
+<!--        $(".link-delete").on("click", function(e) {-->
+<!--        e.preventDefault();-->
+<!--        alert($(this).attr("href"));-->
+<!--&lt;!&ndash;        showDeleteConfirmModal($(this), 'category');&ndash;&gt;-->
+<!--        });-->
+<!--        });-->
+<!--    </script>-->
+
+<script type="text/javascript">
+		$(document).ready(function(){
+			$(".alert").first().hide().fadeTo(2000,1).delay(5000).slideUp(2000,function(){
+				$(this).remove();
+			});
+
+			$(".link-delete").click(function(e){
+				var result = confirm("Do you want to delete this record?");
+				if(result == false){
+					e.preventDefault();
+				}
+			});
+		});
+
+</script>
+
+
 <footer>
+
     <!-- Feather IconIcons-->
+
     <script>
       feather.replace()
-
 
 
     </script>

@@ -1,8 +1,7 @@
 package com.cb008101.pharmacyms.brand;
 
 
-import com.cb008101.pharmacyms.dto.BrandCatDTO;
-import com.cb008101.pharmacyms.brand.Brand;
+import com.cb008101.pharmacyms.dto.BrandCategoryDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,5 +18,5 @@ public interface BrandService
 
     Brand getBrandById(Integer id);
 
-    List<BrandCatDTO> getAllCategoryNames();
+    List<BrandCategoryDTO> getAllCategoryNames();
 }

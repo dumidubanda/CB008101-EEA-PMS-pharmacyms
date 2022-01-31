@@ -1,7 +1,7 @@
 package com.cb008101.pharmacyms.brand;
 
 
-import com.cb008101.pharmacyms.dto.BrandCatDTO;
+import com.cb008101.pharmacyms.dto.BrandCategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ public class BrandController
     BrandService brandService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/saveBrand")
-    public void saveBand(@RequestBody Brand brand)
+    public void saveBrand(@RequestBody Brand brand)
     {
         brandService.saveBrand(brand);
     }
@@ -38,7 +38,7 @@ public class BrandController
     }
 
     @GetMapping("/getAllByName")
-    public List<BrandCatDTO> getAllCategory_names()
+    public List<BrandCategoryDTO> getAllCategory_names()
     {
         return brandService.getAllCategoryNames();
     }

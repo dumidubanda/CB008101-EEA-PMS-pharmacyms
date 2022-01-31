@@ -28,10 +28,10 @@ CREATE TABLE `tbl_pms_stock` (
   `mf_date` varchar(255) NOT NULL,
   `qty` int NOT NULL,
   `rcvd_date` varchar(255) NOT NULL,
-  `drug_id` int DEFAULT NULL,
+  `pharma_item_id` int DEFAULT NULL,
   PRIMARY KEY (`stock_id`),
-  KEY `FK2xa2agvuswjkxsiatd4ferb04` (`drug_id`),
-  CONSTRAINT `FK2xa2agvuswjkxsiatd4ferb04` FOREIGN KEY (`drug_id`) REFERENCES `drugs_items` (`drug_id`)
+  KEY `FK2xa2agvuswjkxsiatd4ferb04` (`pharma_item_id`),
+  CONSTRAINT `FK2xa2agvuswjkxsiatd4ferb04` FOREIGN KEY (`pharma_item_id`) REFERENCES `pharma_items` (`pharma_item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

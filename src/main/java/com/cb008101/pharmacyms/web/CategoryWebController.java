@@ -57,7 +57,7 @@ public class CategoryWebController
     {
         if (result.hasErrors())
         {
-            category.setCategory_id (id);
+            category.setCategoryID (id);
             model.addAttribute("category", category);
             return "category/edit_category";
         }

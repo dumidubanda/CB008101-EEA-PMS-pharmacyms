@@ -8,13 +8,13 @@ import com.cb008101.pharmacyms.category.Category;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "drugs_items")
+@Table(name = "pharma_items")
 public class Items implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "drug_id")
-    private Integer drugID;
+    @Column(name = "pharma_item_id")
+    private Integer phItemID;
 
     @OneToOne(targetEntity = Brand.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "itm_brand_id", referencedColumnName = "itm_brand_id")
@@ -24,40 +24,25 @@ public class Items implements java.io.Serializable {
     @JoinColumn(name = "category_id ", referencedColumnName = "category_id ")
     private Category category;
 
-//    @OneToOne(targetEntity = Rack.class, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "rack_no", referencedColumnName = "rack_no")
-//    private Rack rack;
-//
-//    @OneToOne(targetEntity = Supplier.class, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "sup_id", referencedColumnName = "sup_id")
-//    private Supplier supplier;
 
-    @Column(name = "drug_name", nullable = false)
+    @Column(name = "pharma_item_name", nullable = false)
     private String drugName;
 
-    @Column(name = "full_quantity", nullable = false)
+    @Column(name = "item_total_qty", nullable = false)
     private  Integer fullQty;
 
     @Column(name = "price", nullable = false)
     private Float itmPrice;
 
-//    public Supplier getSupplier() {
-//        return supplier;
-//    }
-//
-//    public void setSupplier(Supplier supplier) {
-//        this.supplier = supplier;
-//    }
 
-
-    public Integer getDrugID()
+    public Integer getPhItemID()
     {
-        return drugID;
+        return phItemID;
     }
 
-    public void setDrugID(Integer drugID)
+    public void setPhItemID(Integer phItemID)
     {
-        this.drugID = drugID;
+        this.phItemID = phItemID;
     }
 
     public Brand getBrand()

@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,6 +39,8 @@
 
 
 
+
+
     </style>
 
 
@@ -62,12 +65,30 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>
+
+<!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--    <div class="navbar-nav">-->
+<!--        <div class="nav-item text-nowrap">-->
+
+<!--            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+         <div class="navbar-nav">
+            <div class="nav-item text-nowrap dropdown">
+                <a class="nav-link px-3 dropdown-toggle"  data-toggle="dropdown"
+                   sec:authentication="principal.username" ></a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                </div>
+
+            </div>
         </div>
-    </div>
+
+
+
 </header>
 <!-- End Header -->
 
@@ -109,15 +130,27 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewPharmacist}">
+                                <a class="nav-link" th:href="@{/users}">
                                     <span data-feather="list"></span>
                                     All Users
                                 </a>
-                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">
+                                <a class="nav-link" th:href="@{/users/new}">
                                     <span data-feather="plus-square"></span>
                                     New Users
                                 </a>
                             </div>
+
+                            <!--                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"-->
+                            <!--                                 data-parent="#accordion">-->
+                            <!--                                <a class="nav-link" th:href="@{/viewPharmacist}">-->
+                            <!--                                    <span data-feather="list"></span>-->
+                            <!--                                    All Users-->
+                            <!--                                </a>-->
+                            <!--                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">-->
+                            <!--                                    <span data-feather="plus-square"></span>-->
+                            <!--                                    New Users-->
+                            <!--                                </a>-->
+                            <!--                            </div>-->
                         </div>
 
                         <!--3 Categories-->
@@ -213,7 +246,7 @@
                             </div>
                             <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/customers}">
+                                <a class="nav-link" th:href="@{/viewCustomers}">
                                     <span data-feather="list"></span>
                                     All Customers
                                 </a>
@@ -370,7 +403,9 @@
         <!-- Start Content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h1">Welcome Admin - Dashboard</h1>
+
+                <h1 class="h1">Welcome</h1>
+
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <!--                    <div class="btn-group me-2">-->
                     <!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
@@ -383,13 +418,15 @@
                 </div>
             </div>
 
-            <!--Content Topic-->
-            <h2>PMS Admin Control Panel</h2>
-
 
             <!--Start Content Goes here-->
-
-
+            <h1>
+                <span sec:authentication="principal.username"> </span>
+            </h1>
+            <br>
+            <h2>
+                <span sec:authentication="principal.authorities"> </span>
+            </h2>
             <!--End Content Goes here-->
 
         </main>
@@ -404,6 +441,8 @@
     <!-- Feather IconIcons-->
     <script>
       feather.replace()
+
+
 
 
     </script>

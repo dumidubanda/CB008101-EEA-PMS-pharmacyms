@@ -1,7 +1,5 @@
 package com.cb008101.pharmacyms.customers;
 
-import com.cb008101.pharmacyms.security.customerlogin.CustomerLogin;
-
 import javax.persistence.*;
 
 @Entity

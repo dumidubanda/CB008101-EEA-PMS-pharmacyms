@@ -16,20 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `drugs_items`
+-- Table structure for table `pharma_items`
 --
 
-DROP TABLE IF EXISTS `drugs_items`;
+DROP TABLE IF EXISTS `pharma_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `drugs_items` (
-  `drug_id` int NOT NULL,
-  `drug_name` varchar(255) NOT NULL,
-  `full_quantity` int NOT NULL,
+CREATE TABLE `pharma_items` (
+  `pharma_item_id` int NOT NULL,
+  `pharma_item_name` varchar(255) NOT NULL,
+  `item_total_qty` int NOT NULL,
   `price` float NOT NULL,
   `itm_brand_id` int DEFAULT NULL,
   `category_id` int DEFAULT NULL,
-  PRIMARY KEY (`drug_id`),
+  PRIMARY KEY (`pharma_item_id`),
   KEY `FKaxx7ifqqtuylg7978bb89lx27` (`itm_brand_id`),
   KEY `FKbiljt0qvaxk8nddhu3oyiba2a` (`category_id`),
   CONSTRAINT `FKaxx7ifqqtuylg7978bb89lx27` FOREIGN KEY (`itm_brand_id`) REFERENCES `tbl_pms_item_brand` (`itm_brand_id`),
@@ -38,13 +38,13 @@ CREATE TABLE `drugs_items` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `drugs_items`
+-- Dumping data for table `pharma_items`
 --
 
-LOCK TABLES `drugs_items` WRITE;
-/*!40000 ALTER TABLE `drugs_items` DISABLE KEYS */;
-INSERT INTO `drugs_items` VALUES (7,'Amoxicillin capsule',122,50,2,1),(10,'Amoxicillin capsule',11,20,6,9),(11,'Vitamin C',100,5000,6,1);
-/*!40000 ALTER TABLE `drugs_items` ENABLE KEYS */;
+LOCK TABLES `pharma_items` WRITE;
+/*!40000 ALTER TABLE `pharma_items` DISABLE KEYS */;
+INSERT INTO `pharma_items` VALUES (7,'Amoxicillin capsule',122,50,2,1),(10,'Amoxicillin capsule',11,20,6,9),(11,'Vitamin C',100,5000,6,1);
+/*!40000 ALTER TABLE `pharma_items` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

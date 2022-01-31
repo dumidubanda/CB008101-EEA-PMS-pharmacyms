@@ -1,8 +1,7 @@
 package com.cb008101.pharmacyms.stock;
 
 
-import com.cb008101.pharmacyms.dto.StockDrugDTO;
-import com.cb008101.pharmacyms.stock.Stock;
+import com.cb008101.pharmacyms.dto.StockItemDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +20,7 @@ public interface StockService
 
     void deleteStock(Integer id);
 
-    List<StockDrugDTO> getAllDetailsOfStock();
+    List<StockItemDTO> getAllDetailsOfStock();
 
     Optional<Stock> reduceStockQty(Integer id, int qty);
 

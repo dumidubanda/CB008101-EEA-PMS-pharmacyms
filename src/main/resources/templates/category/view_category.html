@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,12 +62,26 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>
+<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--    <div class="navbar-nav">-->
+<!--        <div class="nav-item text-nowrap">-->
+
+<!--            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+         <div class="navbar-nav">
+            <div class="nav-item text-nowrap dropdown">
+                <a class="nav-link px-3 dropdown-toggle"  data-toggle="dropdown"
+                   sec:authentication="principal.username" ></a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                </div>
+
+            </div>
         </div>
-    </div>
 </header>
 <!-- End Header -->
 
@@ -108,15 +123,27 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewPharmacist}">
+                                <a class="nav-link" th:href="@{/users}">
                                     <span data-feather="list"></span>
                                     All Users
                                 </a>
-                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">
+                                <a class="nav-link" th:href="@{/users/new}">
                                     <span data-feather="plus-square"></span>
                                     New Users
                                 </a>
                             </div>
+
+<!--                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/viewPharmacist}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Users-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Users-->
+<!--                                </a>-->
+<!--                            </div>-->
                         </div>
 
                         <!--3 Categories-->
@@ -212,7 +239,7 @@
                             </div>
                             <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/customers}">
+                                 <a class="nav-link" th:href="@{/viewCustomers}">
                                     <span data-feather="list"></span>
                                     All Customers
                                 </a>
@@ -407,11 +434,11 @@
                                     </thead>
                                     <tbody>
                                     <tr th:each="category : ${category}">
-                                        <td th:text="${category.category_id }"></td>
-                                        <td th:text="${category.category_name}"></td>
-                                        <td><a th:href="@{/showUpdateCategory/{id} (id=${category.category_id })}"><i
+                                        <td th:text="${category.categoryID }"></td>
+                                        <td th:text="${category.categoryName}"></td>
+                                        <td><a th:href="@{/showUpdateCategory/{id} (id=${category.categoryID })}"><i
                                                 class="bi bi-pencil-square"></i></a></td>
-                                        <td><a th:href="@{/deleteCategory/{id} (id=${category.category_id })}"><i
+                                        <td><a th:href="@{/deleteCategory/{id} (id=${category.categoryID })}"><i
                                                 class="bi bi-trash-fill" style="color:red"></i></a></td>
                                     </tr>
                                     </tbody>

@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,6 +38,7 @@
       }
 
 
+
     </style>
 
 
@@ -61,12 +63,26 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>
+  <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--    <div class="navbar-nav">-->
+<!--        <div class="nav-item text-nowrap">-->
+
+<!--            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+         <div class="navbar-nav">
+            <div class="nav-item text-nowrap dropdown">
+                <a class="nav-link px-3 dropdown-toggle"  data-toggle="dropdown"
+                   sec:authentication="principal.username" ></a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                </div>
+
+            </div>
         </div>
-    </div>
 </header>
 <!-- End Header -->
 
@@ -108,15 +124,27 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/viewPharmacist}">
+                                <a class="nav-link" th:href="@{/users}">
                                     <span data-feather="list"></span>
                                     All Users
                                 </a>
-                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">
+                                <a class="nav-link" th:href="@{/users/new}">
                                     <span data-feather="plus-square"></span>
                                     New Users
                                 </a>
                             </div>
+
+<!--                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"-->
+<!--                                 data-parent="#accordion">-->
+<!--                                <a class="nav-link" th:href="@{/viewPharmacist}">-->
+<!--                                    <span data-feather="list"></span>-->
+<!--                                    All Users-->
+<!--                                </a>-->
+<!--                                <a class="nav-link" th:href="@{/showAddPharmacistForm}">-->
+<!--                                    <span data-feather="plus-square"></span>-->
+<!--                                    New Users-->
+<!--                                </a>-->
+<!--                            </div>-->
                         </div>
 
                         <!--3 Categories-->
@@ -212,7 +240,7 @@
                             </div>
                             <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
                                  data-parent="#accordion">
-                                <a class="nav-link" th:href="@{/customers}">
+                                 <a class="nav-link" th:href="@{/viewCustomers}">
                                     <span data-feather="list"></span>
                                     All Customers
                                 </a>
@@ -390,34 +418,59 @@
             <div class="container-fluid">
                 <h1>Update Item Details</h1>
 
-                <form th:object="${items}" method="post" th:action="@{/updateDrug/{id} (id=${items.drugID})}"
+                <form th:object="${drugs}" method="post" th:action="@{/updateDrug/{id} (id=${drugs.phItemID})}"
                       class="form" style="max-width: 1000px; margin: 0 auto">
 
                     <div class="border border-secondary rounded p-3">
 
-                    <div class="mb-3 row">
-                        <label for="Name" class="col-sm-2 col-form-label">New Items Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" id="name" th:field="*{drugName}" class="form-control">
-                            <span th:if="${#fields.hasErrors('drugName')}" th:errors="*{drugName}"
-                                  style="color:red"></span>
+                        <div class="mb-3 row">
+                            <label for="Name" class="col-sm-2 col-form-label">New Items Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" th:field="*{drugName}" class="form-control">
+                                <span th:if="${#fields.hasErrors('drugName')}" th:errors="*{drugName}"
+                                      style="color:red"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="Name" class="col-sm-2 col-form-label">New Items Price</label>
-                        <div class="col-sm-10">
-                            <input type="number" id="itmPrice" th:field="*{itmPrice}" class="form-control">
-                        </div>
-                    </div>
 
-                    <div class="mb-3 row">
-                        <label for="Name" class="col-sm-2 col-form-label">New Quantity</label>
-                        <div class="col-sm-10">
-                            <input type="number" id="fullQty" th:field="*{fullQty}" class="form-control">
+                        <div class="mb-3 row">
+                            <label for="Name" class="col-sm-2 col-form-label">Select New Brand</label>
+                            <div class="col-sm-10">
+                                <select id="brand" th:field="*{brand}" class="form-control">
+                                    <option value="">--Select a new brand--</option>
+                                    <option th:each="brand: ${brand}" th:value="${brand.brandID}"
+                                            th:text="${brand.brandName}"></option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <button class="btn btn-primary">Save</button>
-                    <button class="btn btn-danger" type="button" th:href="@{/viewDrugs}"> Cancel</button>
+
+                        <div class="mb-3 row">
+                            <label for="Name" class="col-sm-2 col-form-label">Select New Category</label>
+                            <div class="col-sm-10">
+                                <select id="category" th:field="*{category}" class="form-control">
+                                    <option value="">--Select a new category--</option>
+                                    <option th:each="category: ${category}" th:value="${category.categoryID }"
+                                            th:text="${category.categoryName}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="Name" class="col-sm-2 col-form-label">New Quantity</label>
+                            <div class="col-sm-10">
+                                <input type="number" id="fullQty" th:field="*{fullQty}" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="Name" class="col-sm-2 col-form-label">New Items Price</label>
+                            <div class="col-sm-10">
+                                <input type="number" id="itmPrice" th:field="*{itmPrice}" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-danger" type="button" th:href="@{/viewDrugs}"> Cancel</button>
 
                     </div>
                 </form>
@@ -436,6 +489,7 @@
     <!-- Feather IconIcons-->
     <script>
       feather.replace()
+
 
 
 

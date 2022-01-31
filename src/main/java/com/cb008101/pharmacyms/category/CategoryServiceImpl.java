@@ -36,6 +36,15 @@ public class CategoryServiceImpl implements CategoryService
         categoryRepository.deleteById(id);
     }
 
+    @Override
+    public Category getCategorytByID(Integer id)
+    {
+        Optional<Category> cat = Optional.ofNullable(
+                categoryRepository.findById(id).
+                        orElseThrow(() -> new IllegalArgumentException("Invalid ID")));
+        Category category = cat.get();
+        return category;
+    }
 
     @Override
     @Transactional
@@ -43,20 +52,13 @@ public class CategoryServiceImpl implements CategoryService
     {
         return categoryRepository.findById(id).map(e ->
         {
-            e.setCategory_name(category.getCategory_name());
+            e.setCategoryName(category.getCategoryName());
             return e;
         });
     }
 
 
-    @Override
-    public Category getCategorytByID(Integer id)
-    {
-        Optional<Category> cat = Optional.ofNullable(categoryRepository.
-                findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid ID")));
-        Category category = cat.get();
-        return category;
-    }
+
 
 
 }

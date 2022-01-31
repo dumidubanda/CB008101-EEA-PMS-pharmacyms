@@ -1,7 +1,7 @@
 package com.cb008101.pharmacyms.stock;
 
 
-import com.cb008101.pharmacyms.dto.StockDrugDTO;
+import com.cb008101.pharmacyms.dto.StockItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,17 +39,17 @@ public class StockController
     }
 
     @GetMapping("/getAllStockDetails")
-    public List<StockDrugDTO> getAllStockDetails()
+    public List<StockItemDTO> getAllStockDetails()
     {
         return stockService.getAllDetailsOfStock();
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/updateStockQty/{id}/{qty}")
-    public int reduceStockQty(@PathVariable Integer id, @PathVariable int qty)
-    {
-        System.out.println("\n Id : " + id + " Qty: " + qty);
-        stockService.reduceStockQty(id, qty);
-        return 1;
-    }
+//    @RequestMapping(method = RequestMethod.PUT, value = "/updateStockQty/{id}/{qty}")
+//    public int reduceStockQty(@PathVariable Integer id, @PathVariable int qty)
+//    {
+//        System.out.println("\n Id : " + id + " Qty: " + qty);
+//        stockService.reduceStockQty(id, qty);
+//        return 1;
+//    }
 
 }

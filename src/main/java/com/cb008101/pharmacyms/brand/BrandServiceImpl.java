@@ -1,7 +1,7 @@
 package com.cb008101.pharmacyms.brand;
 
 
-import com.cb008101.pharmacyms.dto.BrandCatDTO;
+import com.cb008101.pharmacyms.dto.BrandCategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,16 +30,6 @@ public class BrandServiceImpl implements BrandService
         return brandList;
     }
 
-    @Override
-    @Transactional
-    public Optional<Brand> updateBrand(Brand brand, Integer id)
-    {
-        return brandRepository.findById(id).map(e ->
-        {
-            e.setBrandName(brand.getBrandName());
-            return e;
-        });
-    }
 
     @Override
     public void deleteBrand(Integer id)
@@ -58,9 +48,20 @@ public class BrandServiceImpl implements BrandService
     }
 
     @Override
-    public List<BrandCatDTO> getAllCategoryNames()
+    @Transactional
+    public Optional<Brand> updateBrand(Brand brand, Integer id)
     {
-        List<BrandCatDTO> brandList = new ArrayList<BrandCatDTO>();
+        return brandRepository.findById(id).map(e ->
+        {
+            e.setBrandName(brand.getBrandName());
+            return e;
+        });
+    }
+
+    @Override
+    public List<BrandCategoryDTO> getAllCategoryNames()
+    {
+        List<BrandCategoryDTO> brandList = new ArrayList<BrandCategoryDTO>();
         brandRepository.getAllBrandByCategory().forEach(brandList::add);
         return brandList;
     }

@@ -14,7 +14,7 @@ public class Stock implements java.io.Serializable {
     private Integer stockID;
 
     @OneToOne(targetEntity = Items.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "drug_id", referencedColumnName = "drug_id")
+    @JoinColumn(name = "pharma_item_id", referencedColumnName = "pharma_item_id")
     private Items items;
 
     @Column(name = "mf_date", nullable = false)
