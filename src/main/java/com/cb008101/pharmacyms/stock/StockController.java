@@ -44,12 +44,5 @@ public class StockController
         return stockService.getAllDetailsOfStock();
     }
 
-//    @RequestMapping(method = RequestMethod.PUT, value = "/updateStockQty/{id}/{stockQuantity}")
-//    public int reduceStockQty(@PathVariable Integer id, @PathVariable int stockQuantity)
-//    {
-//        System.out.println("\n Id : " + id + " Qty: " + stockQuantity);
-//        stockService.reduceStockQty(id, stockQuantity);
-//        return 1;
-//    }
 
 }

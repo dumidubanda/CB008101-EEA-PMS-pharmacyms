@@ -39,6 +39,7 @@
 
 
 
+
     </style>
 
 
@@ -63,26 +64,26 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-   <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
-<!--    <div class="navbar-nav">-->
-<!--        <div class="nav-item text-nowrap">-->
+    <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+    <!--    <div class="navbar-nav">-->
+    <!--        <div class="nav-item text-nowrap">-->
 
-<!--            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--            <a class="nav-link px-3" th:href="@{/logout}">Sign out</a>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-         <div class="navbar-nav">
-            <div class="nav-item text-nowrap dropdown">
-                <a class="nav-link px-3 dropdown-toggle"  data-toggle="dropdown"
-                   sec:authentication="principal.username" ></a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap dropdown">
+            <a class="nav-link px-3 dropdown-toggle" data-toggle="dropdown"
+               sec:authentication="principal.username"></a>
 
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
-                </div>
-
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/logout}">Logout</a>
             </div>
+
         </div>
+    </div>
 </header>
 <!-- End Header -->
 
@@ -439,17 +440,18 @@
                                         <td th:text="${brand.brandID}"></td>
                                         <td th:text="${brand.brandName}"></td>
                                         <td th:text="${brand.categoryName}"></td>
-                                        <td><a th:href="@{/showUpdateBrandForm/{id} (id=${brand.brandID})}"><i
-                                                class="bi bi-pencil-square"></i></a></td>
-                                        <td><a th:href="@{/deleteBrand/{id} (id=${brand.brandID})}"><i
-                                                class="bi bi-trash-fill" style="color:red"></i></a></td>
+
+                                        <td><a th:href="@{/showUpdateBrandForm/{id} (id=${brand.brandID})}">
+                                            <i class="bi bi-pencil-square"></i></a></td>
+
+                                        <td><a th:href="@{/deleteBrand/{id} (id=${brand.brandID})}" class="delete"
+                                               onclick="return confirm('Are you sure you want to delete this item')">
+                                            <i class="bi bi-trash-fill" style="color:red"></i></a></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <!--                            <button class="btn btn-success" onclick="location.href='/showAddBrandForm'" type="button">-->
-                            <!--                                Add New Brand-->
-                            <!--                            </button>-->
+
                         </div>
                     </div>
                 </div>
@@ -464,25 +466,18 @@
 
 <!--END DASHBOARD-->
 
-
-<script>
-    $(document).ready(function(){
-  $("#searchBar").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
 
 
+        </script>
 
-</script>
 
 <footer>
     <!-- Feather IconIcons-->
     <script>
       feather.replace()
+
 
     </script>
 

@@ -450,8 +450,9 @@
                                         <td style="text-align:center"><a
                                                 th:href="@{/showUpdatePharmaItemForm/{id} (id=${drug.phItemID})}"><i
                                                 class="bi bi-pencil-square"></i></a></td>
+
                                         <td style="text-align:center"><a
-                                                th:href="@{/deleteStock/{id} (id=${drug.phItemID})}"><i
+                                                th:href="@{/deleteStock/{id} (id=${drug.phItemID})}"class="delete" onclick="return confirm('Are you sure you want to delete this item')"><i
                                                 class="bi bi-trash-fill" style="color:red"></i></a></td>
                                     </tr>
                                     </tbody>

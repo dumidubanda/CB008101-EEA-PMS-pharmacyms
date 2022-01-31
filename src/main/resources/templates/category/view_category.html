@@ -436,10 +436,16 @@
                                     <tr th:each="category : ${category}">
                                         <td th:text="${category.categoryID }"></td>
                                         <td th:text="${category.categoryName}"></td>
-                                        <td><a th:href="@{/showUpdateCategoryForm/{id} (id=${category.categoryID })}"><i
-                                                class="bi bi-pencil-square"></i></a></td>
-                                        <td><a th:href="@{/deleteCategory/{id} (id=${category.categoryID })}"><i
-                                                class="bi bi-trash-fill" style="color:red"></i></a></td>
+
+                                        <td>
+                                            <a th:href="@{/showUpdateCategoryForm/{id} (id=${category.categoryID })}">
+                                            <i class="bi bi-pencil-square"></i></a>
+                                        </td>
+
+                                        <td>
+                                            <a th:href="@{/deleteCategory/{id} (id=${category.categoryID })}" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
+                                            <i class="bi bi-trash-fill" style="color:red"></i></a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -410,20 +410,17 @@
             </div>
 
             <!--Content Topic-->
-            <h2>Stocks Management</h2>
+            <h2>Stock Management</h2>
 
 
             <!--Start Content Goes here-->
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="container-fluid">
-                        <h1>Add New Stock Details</h1>
-
-                        <form th:object="${stock}" method="post" th:action="@{/addNewStock}" class="form"
-                              style="max-width: 1000px; margin: 0 auto">
+                        <h1>Update New Stock Details</h1>
+                        <form th:object="${stock}" method="post" th:action="@{/updateStock/{id} (id=${stock.stockID})" class="form" style="max-width: 1000px; margin: 0 auto">
 
                             <div class="border border-secondary rounded p-3">
-
 
                                 <div class="mb-3 row">
                                     <label for="drugs" class="col-sm-2 col-form-label">Select Item</label>
@@ -437,18 +434,16 @@
                                 </div>
 
                                 <div class="mb-3 row">
-                                    <label for="manuFacDate" class="col-sm-2 col-form-label">Set New Manufactured
-                                        Date</label>
+                                    <label for="manuFacDate" class="col-sm-2 col-form-label">Set Manufacture Date</label>
                                     <div class="col-sm-10">
-                                        <input type="datetime-local" id="manuFacDate" th:field="*{manuFacDate}"
-                                               class="form-control">
+                                        <input type="datetime-local" id="manuFacDate" th:field="*{manuFacDate}" class="form-control">
                                         <span th:if="${#fields.hasErrors('manuFacDate')}" th:errors="*{manuFacDate}"
                                               style="color:red"></span>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
-                                    <label for="expireDate" class="col-sm-2 col-form-label">Set New Expiring Date</label>
+                                    <label for="expireDate" class="col-sm-2 col-form-label">Set Expire Date</label>
                                     <div class="col-sm-10">
                                         <input type="datetime-local" id="expireDate" th:field="*{expireDate}"
                                                class="form-control">
@@ -458,7 +453,7 @@
                                 </div>
 
                                 <div class="mb-3 row">
-                                    <label for="expireDate" class="col-sm-2 col-form-label">Stock New Quantity</label>
+                                    <label for="expireDate" class="col-sm-2 col-form-label">Add Quantity</label>
                                     <div class="col-sm-10">
                                         <input type="number" id="stockQuantity" th:field="*{stockQuantity}" class="form-control">
                                         <span th:if="${#fields.hasErrors('stockQuantity')}" th:errors="*{stockQuantity}"
@@ -467,7 +462,7 @@
                                 </div>
 
                                 <div class="mb-3 row">
-                                    <label for="stockRecievedDate" class="col-sm-2 col-form-label">Set New Received Date</label>
+                                    <label for="stockRecievedDate" class="col-sm-2 col-form-label">Set Received Date</label>
                                     <div class="col-sm-10">
                                         <input type="datetime-local" id="stockRecievedDate" th:field="*{stockRecievedDate}"
                                                class="form-control">
@@ -476,10 +471,9 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-primary">Save</button>
+                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#confirmModal">Save</button>
                                 <button class="btn btn-danger" type="button" th:href="@{/viewPharmaItem}">Cancel
                                 </button>
-
 
                             </div>
                         </form>
@@ -487,6 +481,41 @@
                 </div>
                 <!--End Content Goes here-->
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update Stock Records</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to update this record?
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="btnupdate">Save changes</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script>
+		    $(document).ready(function(){
+			$("#btnupdate").click(function(){
+				$("form").submit();
+			    });
+		    });
+
+            </script>
         </main>
     </div>
 </div>

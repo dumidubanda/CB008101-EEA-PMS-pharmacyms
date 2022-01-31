@@ -441,7 +441,7 @@
 
                                 <td><a th:href="@{/showUpdatePharmacist/{id} (id=${customer.id})}"><i
                                         class="bi bi-pencil-square"></i></a></td>
-                                <td><a th:href="@{/deletecustomer/{id} (id=${customer.id})}"><i
+                                <td><a th:href="@{/deletecustomer/{id} (id=${customer.id})}" class="delete" onclick="return confirm('Are you sure you want to delete this item')"><i
                                         class="bi bi-trash-fill" style="color:red"></i></a></td>
                             </tr>
                             </tbody>

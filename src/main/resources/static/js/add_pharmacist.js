@@ -64,3 +64,8 @@
                 reader.readAsDataURL(file);
             }
 
+ $(document).ready(function(){
+			$("#btnupdate").click(function(){
+				$("form").submit();
+			    });
+		    });
