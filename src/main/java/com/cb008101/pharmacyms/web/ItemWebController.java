@@ -73,7 +73,7 @@ public class ItemWebController
     {
         if (result.hasErrors())
         {
-            items.setDrugID(id);
+            items.setPhItemID(id);
             model.addAttribute("items", items);
             return "pharmaitems/edit_pharma_item";
         }

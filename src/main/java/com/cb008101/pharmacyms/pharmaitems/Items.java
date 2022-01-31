@@ -2,8 +2,7 @@ package com.cb008101.pharmacyms.pharmaitems;
 
 import com.cb008101.pharmacyms.brand.Brand;
 import com.cb008101.pharmacyms.category.Category;
-//import com.cb008101.pharmacyms.racks.Rack;
-//import com.cb008101.pharmacyms.suppliers.Supplier;
+
 
 import javax.persistence.*;
 
@@ -26,7 +25,7 @@ public class Items implements java.io.Serializable {
 
 
     @Column(name = "pharma_item_name", nullable = false)
-    private String drugName;
+    private String itemName;
 
     @Column(name = "item_total_qty", nullable = false)
     private  Integer fullQty;
@@ -65,14 +64,14 @@ public class Items implements java.io.Serializable {
         this.category = category;
     }
 
-    public String getDrugName()
+    public String getItemName()
     {
-        return drugName;
+        return itemName;
     }
 
-    public void setDrugName(String drugName)
+    public void setItemName(String itemName)
     {
-        this.drugName = drugName;
+        this.itemName = itemName;
     }
 
     public Integer getFullQty()

@@ -6,7 +6,7 @@ public class StockItemDTO
 {
     private Integer stockID;
     private Integer phItemID;
-    private String drugName;
+    private String itemName;
     private String mfDate;
     private String expDate;
     private Integer qty;
@@ -17,10 +17,10 @@ public class StockItemDTO
         this.qty = qty;
     }
 
-    public StockItemDTO(Integer stockID, Integer phItemID, String drugName, String mfDate, String expDate, Integer qty, String rcvdDate, Float itmPrice) {
+    public StockItemDTO(Integer stockID, Integer phItemID, String itemName, String mfDate, String expDate, Integer qty, String rcvdDate, Float itmPrice) {
         this.stockID = stockID;
         this.phItemID = phItemID;
-        this.drugName = drugName;
+        this.itemName = itemName;
         this.mfDate = mfDate;
         this.expDate = expDate;
         this.qty = qty;
@@ -48,14 +48,14 @@ public class StockItemDTO
         this.phItemID = phItemID;
     }
 
-    public String getDrugName()
+    public String getItemName()
     {
-        return drugName;
+        return itemName;
     }
 
-    public void setDrugName(String drugName)
+    public void setItemName(String itemName)
     {
-        this.drugName = drugName;
+        this.itemName = itemName;
     }
 
     public String getMfDate()

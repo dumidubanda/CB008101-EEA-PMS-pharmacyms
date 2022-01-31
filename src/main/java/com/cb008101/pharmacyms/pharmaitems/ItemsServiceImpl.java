@@ -30,7 +30,7 @@ public class ItemsServiceImpl implements ItemsService
     {
         return itemsRepository.findById(id).map(e ->
         {
-            e.setDrugName(items.getDrugName());
+            e.setItemName(items.getItemName());
             e.setItmPrice(items.getItmPrice());
             e.setFullQty(items.getFullQty());
             return e;

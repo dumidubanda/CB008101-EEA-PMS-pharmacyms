@@ -431,7 +431,7 @@
                                         <select id="drugs" th:field="*{drugs}" class="form-control">
                                             <option value="">--Select a category--</option>
                                             <option th:each="drugs: ${drugs}" th:value="${drugs.phItemID}"
-                                                    th:text="${drugs.drugName}"></option>
+                                                    th:text="${drugs.itemName}"></option>
                                         </select>
                                     </div>
                                 </div>

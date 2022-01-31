@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class ShopmeUserDetails implements UserDetails
+public class PmsUserDetails implements UserDetails
 {
 
 
@@ -20,7 +20,7 @@ public class ShopmeUserDetails implements UserDetails
     private User user;
 
 
-    public ShopmeUserDetails(User user)
+    public PmsUserDetails(User user)
     {
         this.user = user;
     }

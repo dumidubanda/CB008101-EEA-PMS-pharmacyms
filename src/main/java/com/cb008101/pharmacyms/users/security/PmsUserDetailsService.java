@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
-public class ShopmeUserDetailsService implements UserDetailsService
+public class PmsUserDetailsService implements UserDetailsService
 {
 
     @Autowired
@@ -20,7 +20,7 @@ public class ShopmeUserDetailsService implements UserDetailsService
         User user = userRepo.getUserByEmail(email);
         if (user != null)
         {
-            return new ShopmeUserDetails(user);
+            return new PmsUserDetails(user);
         }
 
         throw new UsernameNotFoundException("Could not find user with email: " + email);

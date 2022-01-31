@@ -3,7 +3,7 @@ package com.cb008101.pharmacyms.dto;
 public class ItemDTO
 {
     private Integer phItemID;
-    private String drugName;
+    private String itemName;
     private Integer brandID;
     private String brandName;
     private Integer categoryID;
@@ -11,10 +11,10 @@ public class ItemDTO
     private Integer fullQty;
     private Float itmPrice;
 
-    public ItemDTO(Integer phItemID, String drugName, Integer brandID, String brandName, Integer categoryID, String categoryName, Integer fullQty, Float itmPrice)
+    public ItemDTO(Integer phItemID, String itemName, Integer brandID, String brandName, Integer categoryID, String categoryName, Integer fullQty, Float itmPrice)
     {
         this.phItemID = phItemID;
-        this.drugName = drugName;
+        this.itemName = itemName;
         this.brandID = brandID;
         this.brandName = brandName;
         this.categoryID = categoryID;
@@ -33,14 +33,14 @@ public class ItemDTO
         this.phItemID = phItemID;
     }
 
-    public String getDrugName()
+    public String getItemName()
     {
-        return drugName;
+        return itemName;
     }
 
-    public void setDrugName(String drugName)
+    public void setItemName(String itemName)
     {
-        this.drugName = drugName;
+        this.itemName = itemName;
     }
 
     public Integer getBrandID()
