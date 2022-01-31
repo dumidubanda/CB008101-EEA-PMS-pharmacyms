@@ -511,7 +511,7 @@
 
                     <!--Buttons-->
                     <div class="text-center">
-                        <input type="submit" value="Save" class="btn btn-primary m-3"/>
+                        <input type="submit" value="Save" class="btn btn-primary m-3" data-target="#confirmModal"/>
                         <input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel"/>
                     </div>
                 </div>
@@ -519,6 +519,43 @@
             </form>
 
             <!--End Content Goes here-->
+
+            <!-- Modal -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Register New User </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to save this record?
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="btnupdate">Save changes</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script>
+		    $(document).ready(function(){
+			$("#btnupdate").click(function(){
+				$("form").submit();
+			    });
+		    });
+
+            </script>
+
+
 
 
             <!--Model  Warning box-->

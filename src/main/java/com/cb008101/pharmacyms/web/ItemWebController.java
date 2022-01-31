@@ -59,7 +59,7 @@ public class ItemWebController
     @GetMapping("/showUpdatePharmaItemForm/{id}")
     public String showEditDrugForm(@PathVariable("id") Integer id, Model model)
     {
-        model.addAttribute("drugs", itemsService.getByID(id));
+        model.addAttribute("items", itemsService.getByID(id));
 
         //added now
         model.addAttribute("brand", brandService.getAllBrands());
@@ -77,7 +77,7 @@ public class ItemWebController
             model.addAttribute("items", items);
             return "pharmaitems/edit_pharma_item";
         }
-        Optional<Items> drugs1 = itemsService.updatePharmaItem(id, items);
+        Optional<Items> items1 = itemsService.updatePharmaItem(id, items);
         return "redirect:/viewPharmaItem";
     }
 

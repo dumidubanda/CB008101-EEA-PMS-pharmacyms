@@ -12,11 +12,13 @@ public interface ItemsService
 
     Optional<Items> updatePharmaItem(Integer id, Items items);
 
+    Items getByID(Integer id);
+
+    List<ItemDTO> getAllByNames();
+
     List<Items> getAllDrugs();
 
     void saveDrug(Items items);
 
-    Items getByID(Integer id);
 
-    List<ItemDTO> getAllByNames();
 }

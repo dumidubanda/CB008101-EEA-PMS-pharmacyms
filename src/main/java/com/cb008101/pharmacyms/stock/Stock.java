@@ -38,13 +38,23 @@ public class Stock implements java.io.Serializable {
         this.stockID = stockID;
     }
 
-    public Items getDrugs() {
-        return items;
+    public Integer getStockQuantity()
+    {
+        return stockQuantity;
     }
 
-    public void setDrugs(Items items) {
-        this.items = items;
+    public void setStockQuantity(Integer stockQuantity)
+    {
+        this.stockQuantity = stockQuantity;
     }
+
+//    public Items getDrugs() {
+//        return items;
+//    }
+//
+//    public void setDrugs(Items items) {
+//        this.items = items;
+//    }
 
     public Items getItems()
     {

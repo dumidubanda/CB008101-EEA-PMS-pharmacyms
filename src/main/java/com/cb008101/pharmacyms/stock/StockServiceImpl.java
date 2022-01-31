@@ -38,7 +38,7 @@ public class StockServiceImpl implements StockService
     {
         return stockRepository.findById(id).map(e ->
         {
-            e.setDrugs(stock.getDrugs());
+            e.setItems(stock.getItems());
             e.setManuFacDate(stock.getManuFacDate());
             e.setExpireDate(stock.getExpireDate());
             e.setstockQuantity(stock.getstockQuantity());
