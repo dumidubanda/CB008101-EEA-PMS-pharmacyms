@@ -1,7 +1,7 @@
 package com.cb008101.pharmacyms.brand;
 
 
-import com.cb008101.pharmacyms.dto.BrandCategoryDTO;
+import com.cb008101.pharmacyms.dto.CategoryBrandDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +38,7 @@ public class BrandController
     }
 
     @GetMapping("/getAllByName")
-    public List<BrandCategoryDTO> getAllCategory_names()
+    public List<CategoryBrandDTO> getAllCategory_names()
     {
         return brandService.getAllCategoryNames();
     }

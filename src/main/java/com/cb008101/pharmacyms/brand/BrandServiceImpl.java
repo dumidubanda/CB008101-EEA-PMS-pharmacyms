@@ -1,7 +1,7 @@
 package com.cb008101.pharmacyms.brand;
 
 
-import com.cb008101.pharmacyms.dto.BrandCategoryDTO;
+import com.cb008101.pharmacyms.dto.CategoryBrandDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,9 +59,9 @@ public class BrandServiceImpl implements BrandService
     }
 
     @Override
-    public List<BrandCategoryDTO> getAllCategoryNames()
+    public List<CategoryBrandDTO> getAllCategoryNames()
     {
-        List<BrandCategoryDTO> brandList = new ArrayList<BrandCategoryDTO>();
+        List<CategoryBrandDTO> brandList = new ArrayList<CategoryBrandDTO>();
         brandRepository.getAllBrandByCategory().forEach(brandList::add);
         return brandList;
     }

@@ -1,13 +1,13 @@
 package com.cb008101.pharmacyms.dto;
 
-public class BrandCategoryDTO
+public class CategoryBrandDTO
 {
     private Integer brandID;
     private String brandName;
     private Integer categoryID;
     private String categoryName;
 
-    public BrandCategoryDTO(Integer brandID, String brandName, Integer categoryID, String categoryName)
+    public CategoryBrandDTO(Integer brandID, String brandName, Integer categoryID, String categoryName)
     {
         this.brandID = brandID;
         this.brandName = brandName;
